@@ -13,16 +13,20 @@
         android:theme="@style/Theme.Menghitung_Mimpi"
         tools:targetApi="31">
         <activity
-            android:name=".layout.HomeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".layout.LoginRegisterActivity"
-            android:exported="true" >
+            android:name=".layout.SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>>
+        </activity>
+        <activity
+            android:name=".layout.LoginRegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".layout.HomeActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
