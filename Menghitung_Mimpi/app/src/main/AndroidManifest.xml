@@ -34,7 +34,7 @@
             android:name=".layout.LoginRegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".layout.HomeActivity"
+            android:name=".layout.MainActivity"
             android:exported="false" />
     </application>
 
