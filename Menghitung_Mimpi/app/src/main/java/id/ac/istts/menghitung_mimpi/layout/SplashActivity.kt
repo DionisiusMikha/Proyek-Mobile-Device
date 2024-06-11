@@ -13,7 +13,6 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            // Pindah ke MainActivity
             val intent = Intent(this, LoginRegisterActivity::class.java)
             startActivity(intent)
             finish()

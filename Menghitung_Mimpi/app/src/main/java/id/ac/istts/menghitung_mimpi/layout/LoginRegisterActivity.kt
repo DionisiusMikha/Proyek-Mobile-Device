@@ -4,26 +4,35 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import id.ac.istts.menghitung_mimpi.R
 
 class LoginRegisterActivity : AppCompatActivity() {
-    lateinit var btnSignUpLoginRegisterPage: Button
-    lateinit var btnLoginLoginRegisterPage: Button
+    lateinit var btnSignUp: Button
+    lateinit var btnLogin: Button
+    lateinit var txtForgotPassword: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_register)
 
-        btnLoginLoginRegisterPage = findViewById(R.id.btnLoginLoginRegisterPage)
-        btnSignUpLoginRegisterPage = findViewById(R.id.btnSignUpLoginRegisterPage)
+        btnLogin = findViewById(R.id.btnLoginLoginRegisterPage)
+        btnSignUp = findViewById(R.id.btnSignUpLoginRegisterPage)
+        txtForgotPassword = findViewById(R.id.txtForgotPassword)
 
-        btnSignUpLoginRegisterPage.setOnClickListener {
+        btnSignUp.setOnClickListener {
             val intent = Intent(this, IntroSliderActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-        btnLoginLoginRegisterPage.setOnClickListener {
+        btnLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        txtForgotPassword.setOnClickListener{
+            val intent = Intent(this, ForgotPasswordActivity::class.java)
             startActivity(intent)
             finish()
         }
