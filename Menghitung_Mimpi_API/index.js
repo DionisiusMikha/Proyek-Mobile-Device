@@ -10,6 +10,10 @@ const conn = require("./database/connection");
 
 app.use("/api", apiRouter);
 
+app.use((req, res) => {
+  res.status(404).json({ message: "Not Found" });
+});
+
 const initApp = async () => {
   try {
     await conn.authenticate();
