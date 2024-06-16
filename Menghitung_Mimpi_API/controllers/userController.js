@@ -1,6 +1,7 @@
 const Users = require("../models/UserModel");
 const bcrypt = require("bcrypt");
 const Joi = require("joi");
+const jwt = require("jsonwebtoken")
 
 const register = async (req, res) => {
   const { full_name, dob, phone_number, email, password, confirm_password } =
@@ -39,10 +40,12 @@ const register = async (req, res) => {
     const ctr = await Users.count();
     let id_user = `USR-${("000" + (ctr + 1)).slice(-3)}`;
     const hashedPassword = await bcrypt.hash(password, 10);
+    const _dob = new Date(dob)
+    _dob.setMonth(_dob.getMonth()+1);
     const user = await Users.create({
       id_user,
       full_name,
-      dob,
+      dob: _dob,
       phone_number,
       email,
       password: hashedPassword,
@@ -59,6 +62,7 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
+  console.log(req.body)
   const { email, password } = req.body;
   try {
     if (!email || !password) {
@@ -82,13 +86,7 @@ const login = async (req, res) => {
 
     res.status(200).json({
       message: "Login success",
-      token,
-      user: {
-        id_user: user.id_user,
-        full_name: user.full_name,
-        email: user.email,
-        phone_number: user.phone_number,
-      },
+      token
     });
   } catch (err) {
     res.status(500).json({ message: err.message });

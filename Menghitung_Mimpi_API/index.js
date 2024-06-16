@@ -10,6 +10,10 @@ const conn = require("./database/connection");
 
 app.use("/api", apiRouter);
 
+app.get('/', (req, res) => {
+  return res.status(200).send({message: "try"})
+})
+
 const initApp = async () => {
   try {
     await conn.authenticate();
