@@ -8,6 +8,7 @@ const conn = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
   port: DB_PORT,
   dialect: "mysql",
   logging: false,
+  timezone: "+07:00",
 });
 
 module.exports = conn;
