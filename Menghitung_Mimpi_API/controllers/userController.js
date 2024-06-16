@@ -130,22 +130,6 @@ const login = async (req, res) => {
   }
 };
 
-const forgotPassword = async (req, res) => {
-  const { email } = req.body;
-  try {
-    if (!email) {
-      return res.status(400).json({ message: "Please fill email field" });
-    }
-
-    const user = await Users.findOne({ where: { email } });
-    if (!user) {
-      return res.status(400).json({ message: "Email not registered" });
-    }
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
-
 const authentication = async (req, res, next) => {
   // bearer token
   const authHeader = req.headers["authorization"];
