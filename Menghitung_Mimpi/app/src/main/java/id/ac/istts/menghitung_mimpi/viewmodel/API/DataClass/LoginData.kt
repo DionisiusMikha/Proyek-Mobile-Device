@@ -14,8 +14,3 @@ data class LoginResponse<T>(
     @Json(name = "message") val message: String,
     @Json(name = "token") val token: String
 )
-
-@JsonClass(generateAdapter = true)
-data class ErrorResponse<T>(
-    @Json(name = "message") val message: String
-)

@@ -1,5 +1,6 @@
 package id.ac.istts.menghitung_mimpi.viewmodel
 
+import id.ac.istts.menghitung_mimpi.viewmodel.API.Repository.LoginApiException
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Repository.LoginRepo
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.ViewModel
@@ -18,12 +19,15 @@ class LoginVM(private val loginRepo: LoginRepo): ViewModel() {
 
     suspend fun login(email: String, password: String, onSuccess: (String) -> Unit, onError: (String) -> Unit) {
         viewModelScope.launch(Dispatchers.IO) {
-            try {
-                val response = loginRepo.login(email, password)
-                onSuccess("Login Berhasil")
-            } catch (e: Exception) {
-                println(e)
-                onError(e.message ?: "An unknown error occurred")
+            val result = loginRepo.login(email, password)
+            result.onSuccess { response ->
+                onSuccess("Berhasil Login!!")
+            }.onFailure { throwable ->
+                if (throwable is LoginApiException) {
+                    onError(throwable.message ?: "Unknown error")
+                } else {
+                    onError(throwable.message ?: "Unknown error")
+                }
             }
         }
     }
