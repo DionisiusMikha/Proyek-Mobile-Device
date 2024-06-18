@@ -8,8 +8,8 @@
     tools:context=".layout.RegisterActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="391dp"
-        android:layout_height="620dp"
+        android:layout_width="413dp"
+        android:layout_height="622dp"
         android:background="@drawable/rounded_top_corners"
         android:backgroundTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
