@@ -20,7 +20,7 @@ class LoginRegisterActivity : AppCompatActivity() {
         txtForgotPassword = findViewById(R.id.txtForgotPassword)
 
         btnSignUp.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
+            val intent = Intent(this, IntroSliderActivity::class.java)
             startActivity(intent)
             finish()
         }
