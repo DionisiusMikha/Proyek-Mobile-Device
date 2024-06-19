@@ -36,6 +36,7 @@ const Users = conn.define(
   },
   {
     freezeTableName: true,
+    paranoid: true,
   }
 );
 

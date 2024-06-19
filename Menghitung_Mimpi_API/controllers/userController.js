@@ -123,7 +123,8 @@ const login = async (req, res) => {
       throw new Error("JWT_SECRET environment variable not set");
     }
 
-    const token = jwt.sign({ id: user.id_user }, process.env.JWT_SECRET);
+    const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET);
+
     res.status(200).json({ Message: "Login success", token: token });
   } catch (err) {
     res.status(500).json({ message: err.message });

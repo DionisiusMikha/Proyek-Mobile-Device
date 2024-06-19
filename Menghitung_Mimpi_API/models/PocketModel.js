@@ -1,18 +1,22 @@
 const { DataTypes } = require("sequelize");
 const conn = require("../database/connection");
 
-const PasswordKey = conn.define(
-  "passwordkey",
+const Pocket = conn.define(
+  "pocket",
   {
-    id_pwkey: {
+    id_pocket: {
       type: DataTypes.STRING,
       primaryKey: true,
     },
-    id_user: {
+    nama_pocket: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    password_key: {
+    saldo_pocket: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    id_user: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -23,4 +27,4 @@ const PasswordKey = conn.define(
   }
 );
 
-module.exports = PasswordKey;
+module.exports = Pocket;
