@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/frameLayout6"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".layout.ResponseDanaDaruratFragment">
+    tools:context=".layout.ResponseKalkulatorInvestasiFragment" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout11"
+        android:id="@+id/constraintLayout7"
         android:layout_width="0dp"
         android:layout_height="600dp"
         android:layout_marginTop="132dp"
@@ -30,13 +30,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
             <TextView
-                android:id="@+id/tvResponseTextDanaDarurat"
+                android:id="@+id/tvResponseTextKalkulatorInvestasi1"
                 android:layout_width="218dp"
                 android:layout_height="42dp"
                 android:layout_marginStart="10dp"
-                android:text="tvResponseTextDanaDarurat"
+                android:text="tvResponseTextKalkulatorInvestasi"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -44,7 +43,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/ivResponseEmoteDanaDarurat"
+                android:id="@+id/ivResponseEmoteKalkulatorInvestasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/loan_1"
@@ -54,47 +53,60 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout12"
+            android:id="@+id/constraintLayout9"
             android:layout_width="326dp"
             android:layout_height="69dp"
             android:layout_marginTop="15dp"
-            app:layout_constraintStart_toStartOf="@+id/constraintLayout8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout8">
 
             <TextView
-                android:id="@+id/textView78"
+                android:id="@+id/textView77"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="Dana Darurat Yang Kamu Butuhkan"
+                android:layout_marginTop="12dp"
+                android:text="Total uang yang kamu butuhkan"
                 android:textColor="#000000"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.179"
+                app:layout_constraintStart_toEndOf="@+id/imageView6"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/money_bank__institution_money_saving_bank_payment_finance_2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.482" />
+
             <TextView
-                android:id="@+id/tvDanaDaruratYangDibutuhkan"
+                android:id="@+id/tvTotalUangDibutuhkanKalkulatorInvestasiResponse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="tvDanaDaruratYangDibutuhkan"
-                app:layout_constraintStart_toStartOf="@+id/textView78"
-                app:layout_constraintTop_toBottomOf="@+id/textView78" />
-
+                android:layout_marginTop="8dp"
+                android:text="tvTotalUangDibutuhkan"
+                app:layout_constraintStart_toEndOf="@+id/imageView6"
+                app:layout_constraintStart_toStartOf="@+id/textView77"
+                app:layout_constraintTop_toBottomOf="@+id/textView77" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout13"
+            android:id="@+id/constraintLayout10"
             android:layout_width="326dp"
             android:layout_height="220dp"
             android:layout_marginTop="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout12">
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
 
             <TextView
-                android:id="@+id/textView85"
+                android:id="@+id/textView79"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -106,150 +118,153 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView13"
+                android:id="@+id/imageView7"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="16dp"
                 android:src="@drawable/money_bank__institution_money_saving_bank_payment_finance_1"
-                app:layout_constraintStart_toStartOf="@+id/textView85"
-                app:layout_constraintTop_toBottomOf="@+id/textView85" />
+                app:layout_constraintStart_toStartOf="@+id/textView79"
+                app:layout_constraintTop_toBottomOf="@+id/textView79" />
 
             <ImageView
-                android:id="@+id/imageView14"
+                android:id="@+id/imageView8"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/money_bank__institution_money_saving_bank_payment_finance_1__1_"
-                app:layout_constraintStart_toStartOf="@+id/imageView13"
-                app:layout_constraintTop_toBottomOf="@+id/imageView13" />
+                app:layout_constraintStart_toStartOf="@+id/imageView7"
+                app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
             <ImageView
-                android:id="@+id/imageView15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/imageView9"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/money_bank__institution_money_saving_bank_payment_finance_1__2_"
-                app:layout_constraintStart_toStartOf="@+id/imageView14"
-                app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+                app:layout_constraintStart_toStartOf="@+id/imageView8"
+                app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
             <ImageView
-                android:id="@+id/imageView16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/imageView10"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/money_bank__institution_money_saving_bank_payment_finance_1__3_"
-                app:layout_constraintStart_toStartOf="@+id/imageView15"
-                app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+                app:layout_constraintStart_toStartOf="@+id/imageView9"
+                app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
             <ImageView
-                android:id="@+id/imageView17"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/imageView11"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/money_bank__institution_money_saving_bank_payment_finance_1__4_"
-                app:layout_constraintStart_toStartOf="@+id/imageView16"
-                app:layout_constraintTop_toBottomOf="@+id/imageView16" />
+                app:layout_constraintStart_toStartOf="@+id/imageView10"
+                app:layout_constraintTop_toBottomOf="@+id/imageView10" />
 
             <TextView
-                android:id="@+id/textView97"
+                android:id="@+id/textView80"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Dana daruratmu saat ini"
+                android:text="Uangmu saat ini"
                 android:textColor="#000000"
                 android:textSize="10sp"
-                app:layout_constraintStart_toEndOf="@+id/imageView13"
-                app:layout_constraintTop_toTopOf="@+id/imageView13" />
+                app:layout_constraintStart_toEndOf="@+id/imageView7"
+                app:layout_constraintTop_toTopOf="@+id/imageView7" />
 
             <TextView
-                android:id="@+id/tvDanaDaruratSaatIni"
+                android:id="@+id/tvUangSaatIniResponseKalkulatorInvestasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="tvDanaDaruratSaatIni"
+                android:text="tvUangSaatIniResponseKalkulatorInvestasi"
                 android:textSize="10sp"
-                app:layout_constraintStart_toStartOf="@+id/textView97"
-                app:layout_constraintTop_toBottomOf="@+id/textView97" />
+                app:layout_constraintStart_toStartOf="@+id/textView80"
+                app:layout_constraintTop_toBottomOf="@+id/textView80" />
 
             <TextView
-                android:id="@+id/textView99"
+                android:id="@+id/textView82"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:text="Jumlah investasi / bulan"
                 android:textColor="#000000"
                 android:textSize="10sp"
-                app:layout_constraintStart_toStartOf="@+id/tvDanaDaruratSaatIni"
-                app:layout_constraintTop_toTopOf="@+id/imageView14" />
+                app:layout_constraintStart_toEndOf="@+id/imageView8"
+                app:layout_constraintTop_toTopOf="@+id/imageView8" />
 
             <TextView
-                android:id="@+id/tvJumlahInvestasiResponseDanaDarurat"
+                android:id="@+id/tvJumlahInvestasiResponseKalkulatorInvestasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="tvJumlahInvestasiResponseDanaDarurat"
+                android:text="tvJumlahInvestasiResponseKalkulatorInvestasi"
                 android:textSize="10sp"
-                app:layout_constraintStart_toStartOf="@+id/textView99"
-                app:layout_constraintTop_toBottomOf="@+id/textView99" />
+                app:layout_constraintStart_toStartOf="@+id/textView82"
+                app:layout_constraintTop_toBottomOf="@+id/textView82" />
 
             <TextView
-                android:id="@+id/textView101"
+                android:id="@+id/textView84"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="Return investasi"
                 android:textColor="#000000"
                 android:textSize="10sp"
-                app:layout_constraintStart_toEndOf="@+id/imageView15"
-                app:layout_constraintTop_toTopOf="@+id/imageView15" />
+                app:layout_constraintStart_toEndOf="@+id/imageView9"
+                app:layout_constraintTop_toTopOf="@+id/imageView9" />
 
             <TextView
-                android:id="@+id/tvReturnInvestasiResponseDanaDarurat"
+                android:id="@+id/tvReturnInvestasiResponseKalkulatorInvestasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="tvReturnInvestasiResponseDanaDarurat"
+                android:text="tvReturnInvestasiResponseKalkulatorInvestasi"
                 android:textSize="10sp"
-                app:layout_constraintStart_toStartOf="@+id/textView101"
-                app:layout_constraintTop_toBottomOf="@+id/textView101" />
+                app:layout_constraintStart_toStartOf="@+id/textView84"
+                app:layout_constraintTop_toBottomOf="@+id/textView84" />
 
             <TextView
-                android:id="@+id/textView103"
+                android:id="@+id/textView86"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:text="Lama investasi"
                 android:textColor="#000000"
                 android:textSize="10sp"
-                app:layout_constraintStart_toStartOf="@+id/tvReturnInvestasiResponseDanaDarurat"
-                app:layout_constraintTop_toTopOf="@+id/imageView16" />
+                app:layout_constraintStart_toEndOf="@+id/imageView10"
+                app:layout_constraintTop_toTopOf="@+id/imageView10" />
 
             <TextView
-                android:id="@+id/tvLamaInvestasiResponseDanaDarurat"
+                android:id="@+id/tvLamaInvestasiResponseKalkulatorInvestasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="tvLamaInvestasiResponseDanaDarurat"
+                android:text="tvLamaInvestasiResponseKalkulatorInvestasi"
                 android:textSize="10sp"
-                app:layout_constraintStart_toStartOf="@+id/textView103"
-                app:layout_constraintTop_toBottomOf="@+id/textView103" />
+                app:layout_constraintStart_toStartOf="@+id/textView86"
+                app:layout_constraintTop_toBottomOf="@+id/textView86" />
 
             <TextView
-                android:id="@+id/textView105"
+                android:id="@+id/textView88"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:text="Hasil Investasi"
                 android:textColor="#000000"
                 android:textSize="10sp"
-                app:layout_constraintStart_toStartOf="@+id/tvLamaInvestasiResponseDanaDarurat"
-                app:layout_constraintTop_toTopOf="@+id/imageView17" />
+                app:layout_constraintStart_toEndOf="@+id/imageView11"
+                app:layout_constraintTop_toTopOf="@+id/imageView11" />
 
             <TextView
-                android:id="@+id/tvHasilInvestasiResponseDanaDarurat"
+                android:id="@+id/tvHasilInvestasiResponseKalkulatorInvestasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="tvHasilInvestasiResponseDanaDarurat"
+                android:text="tvHasilInvestasiResponseKalkulatorInvestasi"
                 android:textSize="10sp"
-                app:layout_constraintStart_toStartOf="@+id/textView105"
-                app:layout_constraintTop_toBottomOf="@+id/textView105" />
+                app:layout_constraintStart_toStartOf="@+id/textView88"
+                app:layout_constraintTop_toBottomOf="@+id/textView88" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
-            android:id="@+id/btnSimpanRespnseDanaDarurat"
+            android:id="@+id/btnSimpanResponseKalkulatorInvestasi"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -257,21 +272,19 @@
             android:text="Simpan"
             app:cornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout13" />
-
-
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout10" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/textView83"
+        android:id="@+id/textView75"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dana Darurat"
+        android:text="Kalkulator Investasi"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout11"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

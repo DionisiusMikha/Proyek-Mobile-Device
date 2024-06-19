@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import id.ac.istts.menghitung_mimpi.R
 
 class ResponseDanaDaruratFragment : Fragment() {
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

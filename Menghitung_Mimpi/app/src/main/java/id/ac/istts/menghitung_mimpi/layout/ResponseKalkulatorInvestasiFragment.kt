@@ -8,12 +8,11 @@ import android.view.ViewGroup
 import id.ac.istts.menghitung_mimpi.R
 
 class ResponseKalkulatorInvestasiFragment : Fragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_response_kalkulator_investasi, container, false)
+        return inflater.inflate(R.layout.fragment_response_kalkulator_infestasi, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
