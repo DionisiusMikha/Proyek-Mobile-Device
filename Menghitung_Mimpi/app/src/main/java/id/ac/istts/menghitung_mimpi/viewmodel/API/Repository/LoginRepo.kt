@@ -8,6 +8,7 @@ class LoginRepo (private val apiService: LoginService) {
     suspend fun login(email: String, password: String): Result<LoginResponse<Any>> {
         return try {
             val response = apiService.login(LoginRequest(email, password))
+            println(response)
             Result.success(response)
         } catch (e: ApiException) {
             Result.failure(e)

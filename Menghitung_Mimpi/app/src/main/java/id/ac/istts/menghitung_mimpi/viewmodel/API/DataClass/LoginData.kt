@@ -11,6 +11,6 @@ data class LoginRequest(
 
 @JsonClass(generateAdapter = true)
 data class LoginResponse<T>(
-    @Json(name = "message") val message: String,
+    @Json(name = "Message") val message: String,
     @Json(name = "token") val token: String
 )
