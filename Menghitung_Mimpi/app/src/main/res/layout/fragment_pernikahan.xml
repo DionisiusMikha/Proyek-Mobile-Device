@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".layout.PernikahanFragment">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="674dp"
+        android:layout_marginTop="132dp"
+        android:background="@drawable/rounded_top_corners"
+        android:paddingBottom="110dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_top_corners">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="59dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="28dp"
+                android:src="@drawable/penguin__2__1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="244dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_corner_background_pengu"
+                android:padding="5dp"
+                android:text="jangan lupa hitung biaya  resepsimu menyesuaikan budget ya"
+                android:textColor="#000000"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="@+id/textView32"
+                app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_corner_background_pengu"
+                android:padding="5dp"
+                android:text="Cie Yang mau ngitung nikah"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Total biaya resepsi / pernikahanmu sebesar"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/imageView3"
+                app:layout_constraintTop_toBottomOf="@+id/textView33" />
+
+            <EditText
+                android:id="@+id/etTotalBiayaResepsi"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_background"
+                android:ems="10"
+                android:inputType="text"
+                android:padding="10dp"
+                app:layout_constraintStart_toStartOf="@+id/textView34"
+                app:layout_constraintTop_toBottomOf="@+id/textView34" />
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="24dp"
+                android:text="Rp"
+                android:textColor="#040404"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/etTotalBiayaResepsi"
+                app:layout_constraintTop_toBottomOf="@+id/textView34" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Kamu akan menikah dalam"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/etTotalBiayaResepsi"
+                app:layout_constraintTop_toBottomOf="@+id/etTotalBiayaResepsi" />
+
+            <EditText
+                android:id="@+id/etMenikahDalam"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_background"
+                android:ems="10"
+                android:inputType="text"
+                android:padding="10dp"
+                app:layout_constraintStart_toStartOf="@+id/textView36"
+                app:layout_constraintTop_toBottomOf="@+id/textView36" />
+
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Tahun"
+                android:textColor="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.049"
+                app:layout_constraintStart_toEndOf="@+id/etMenikahDalam"
+                app:layout_constraintTop_toTopOf="@+id/etMenikahDalam" />
+
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Asumsi inflasi"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/etMenikahDalam"
+                app:layout_constraintTop_toBottomOf="@+id/etMenikahDalam" />
+
+            <EditText
+                android:id="@+id/etAsumsiInflasi"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_background"
+                android:ems="10"
+                android:inputType="text"
+                android:padding="10dp"
+                app:layout_constraintStart_toStartOf="@+id/textView38"
+                app:layout_constraintTop_toBottomOf="@+id/textView38" />
+
+            <TextView
+                android:id="@+id/textView39"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="% / Tahun"
+                android:textColor="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.054"
+                app:layout_constraintStart_toEndOf="@+id/etAsumsiInflasi"
+                app:layout_constraintTop_toBottomOf="@+id/textView38" />
+
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="250dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="16dp"
+                android:text="Total uang yang kamu perlukan 2 tahun lagi sebesar"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/etAsumsiInflasi"
+                app:layout_constraintTop_toBottomOf="@+id/etAsumsiInflasi" />
+
+            <EditText
+                android:id="@+id/etTotalUangYangDiperlukan"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_background"
+                android:ems="10"
+                android:inputType="text"
+                android:padding="10dp"
+                app:layout_constraintStart_toStartOf="@+id/textView40"
+                app:layout_constraintTop_toBottomOf="@+id/textView40" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="59dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="28dp"
+                android:src="@drawable/penguin__2__2"
+                app:layout_constraintStart_toStartOf="@+id/etTotalUangYangDiperlukan"
+                app:layout_constraintTop_toBottomOf="@+id/etTotalUangYangDiperlukan" />
+
+            <TextView
+                android:id="@+id/textView43"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_corner_background_pengu"
+                android:padding="5dp"
+                android:text="Thank you"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@+id/imageView4"
+                app:layout_constraintTop_toBottomOf="@+id/etTotalUangYangDiperlukan" />
+
+            <TextView
+                android:id="@+id/textView44"
+                android:layout_width="198dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_corner_background_pengu"
+                android:padding="5dp"
+                android:text="Next, ayo atur strategi investasi kamu!"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/textView43"
+                app:layout_constraintTop_toBottomOf="@+id/textView43" />
+
+            <TextView
+                android:id="@+id/textView45"
+                android:layout_width="232dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:text="Uang yang kamu miliki saat ini untuk menikah sebesar"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/imageView4"
+                app:layout_constraintTop_toBottomOf="@+id/textView44" />
+
+            <EditText
+                android:id="@+id/etUangSekarang"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_background"
+                android:ems="10"
+                android:inputType="text"
+                android:padding="10dp"
+                app:layout_constraintStart_toStartOf="@+id/textView45"
+                app:layout_constraintTop_toBottomOf="@+id/textView45" />
+
+            <TextView
+                android:id="@+id/textView46"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Target investasimu tiap bulan"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/etUangSekarang"
+                app:layout_constraintTop_toBottomOf="@+id/etUangSekarang" />
+
+            <EditText
+                android:id="@+id/etTargetInvestasi"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_background"
+                android:ems="10"
+                android:inputType="text"
+                android:padding="10dp"
+                app:layout_constraintStart_toStartOf="@+id/textView46"
+                app:layout_constraintTop_toBottomOf="@+id/textView46" />
+
+            <TextView
+                android:id="@+id/textView47"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Kamu akan investasi di produk yang returnnya"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/etTargetInvestasi"
+                app:layout_constraintTop_toBottomOf="@+id/etTargetInvestasi" />
+
+            <EditText
+                android:id="@+id/etProdukRetur"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_background"
+                android:ems="10"
+                android:inputType="text"
+                android:padding="10dp"
+                app:layout_constraintStart_toStartOf="@+id/textView47"
+                app:layout_constraintTop_toBottomOf="@+id/textView47" />
+
+            <TextView
+                android:id="@+id/textView48"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="4dp"
+                android:text="% / Tahun"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="@+id/etProdukRetur"
+                app:layout_constraintStart_toEndOf="@+id/etProdukRetur" />
+
+            <TextView
+                android:id="@+id/textView49"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Kamu akan rutin berinvestasi selama"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/etProdukRetur"
+                app:layout_constraintTop_toBottomOf="@+id/etProdukRetur" />
+
+            <EditText
+                android:id="@+id/etLamaInvestasi"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_background"
+                android:ems="10"
+                android:inputType="text"
+                android:padding="10dp"
+                app:layout_constraintStart_toStartOf="@+id/textView49"
+                app:layout_constraintTop_toBottomOf="@+id/textView49" />
+
+            <TextView
+                android:id="@+id/textView50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                android:text="Tahun"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@+id/etLamaInvestasi"
+                app:layout_constraintTop_toTopOf="@+id/etLamaInvestasi" />
+
+            <Button
+                android:id="@+id/btnHitungMenikahActivity"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="#00CF9D"
+                android:text="Hitung"
+                app:cornerRadius="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etLamaInvestasi" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Menikah"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
