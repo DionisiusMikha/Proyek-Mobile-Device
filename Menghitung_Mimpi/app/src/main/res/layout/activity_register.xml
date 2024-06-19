@@ -29,6 +29,7 @@
             android:inputType="text"
             android:paddingLeft="15sp"
             android:paddingRight="10sp"
+            android:textColor="#031314"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -60,6 +61,7 @@
             android:inputType="text"
             android:paddingLeft="15sp"
             android:paddingRight="10sp"
+            android:textColor="#031314"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -91,6 +93,7 @@
             android:inputType="text"
             android:paddingLeft="15sp"
             android:paddingRight="10sp"
+            android:textColor="#031314"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -122,6 +125,7 @@
             android:inputType="text"
             android:paddingLeft="15sp"
             android:paddingRight="10sp"
+            android:textColor="#031314"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -165,6 +169,7 @@
             android:inputType="textPassword"
             android:paddingLeft="15sp"
             android:paddingRight="10sp"
+            android:textColor="#031314"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -182,6 +187,7 @@
             android:inputType="textPassword"
             android:paddingLeft="15sp"
             android:paddingRight="10sp"
+            android:textColor="#031314"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -196,6 +202,7 @@
             android:layout_height="37dp"
             android:text="By continuing, you agree to   Terms of Use and Privacy Policy."
             android:textAlignment="center"
+            android:textColor="#031314"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -219,31 +226,18 @@
             app:layout_constraintVertical_bias="0.335" />
 
         <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="76dp"
-            android:text="Already have an account?"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.413"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnSignUpRegisterPage"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
             android:id="@+id/tvToLoginPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="96dp"
+            android:layout_marginBottom="28dp"
             android:text="Log In"
             android:textColor="#51C1F4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/textView12"
+            app:layout_constraintHorizontal_bias="0.693"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnSignUpRegisterPage"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.185" />
 
         <TextView
             android:id="@+id/textView6"
@@ -257,6 +251,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.175" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="72dp"
+            android:text="Already Have account?"
+            android:textColor="#031314"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvToLoginPage"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSignUpRegisterPage"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
