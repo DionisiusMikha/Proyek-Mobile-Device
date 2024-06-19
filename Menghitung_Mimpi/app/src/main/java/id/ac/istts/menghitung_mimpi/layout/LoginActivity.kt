@@ -43,21 +43,21 @@ class LoginActivity : AppCompatActivity() {
         }
 
         btnLogIn.setOnClickListener {
-            var email: String = etEmailLoginPage.text.toString()
+            /*var email: String = etEmailLoginPage.text.toString()
             var password: String = etPasswordLoginPage.text.toString()
             coroutine.launch {
                 vm.login(email, password, onSuccess = { message ->
-                    runOnUiThread {
+                    runOnUiThread {*/
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
                         startActivity(intent)
                         finish()
-                    }
+                   /* }
                 }, onError = { error ->
                     runOnUiThread {
                         Toast.makeText(this@LoginActivity, error, Toast.LENGTH_LONG).show()
                     }
                 })
-            }
+            } */
         }
     }
 }
