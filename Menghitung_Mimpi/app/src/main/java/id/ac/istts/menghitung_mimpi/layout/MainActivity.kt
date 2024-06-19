@@ -22,9 +22,9 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.homeFragment -> replaceFragment(HomeFragment())
-                R.id.riwayatFragment -> replaceFragment(PernikahanFragment())
-                R.id.cardFragment -> replaceFragment(DanaDaruratFragment())
-                R.id.profileFragment -> replaceFragment(KalkulatorInvestasiFragment())
+                R.id.riwayatFragment -> replaceFragment(HistoryFragment())
+                R.id.cardFragment -> replaceFragment(CardFragment())
+                R.id.profileFragment -> replaceFragment(ProfileFragment())
                 else -> false
             }
             true
