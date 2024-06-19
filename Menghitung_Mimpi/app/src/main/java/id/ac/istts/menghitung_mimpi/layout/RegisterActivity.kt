@@ -61,9 +61,9 @@ class RegisterActivity : AppCompatActivity() {
                 vm.register(full_name, dob, phone_number, email, password, confirm_password, onSuccess = { message ->
                     runOnUiThread {
                         Toast.makeText(this@RegisterActivity, "Berhasil Regsiter!!", Toast.LENGTH_LONG).show()
-//                        val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-//                        startActivity(intent)
-//                        finish()
+                        val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                        startActivity(intent)
+                        finish()
                     }
                 }, onError = { error ->
                     runOnUiThread {
