@@ -51,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
                         startActivity(intent)
                         finish()
-                   }
+                    }
                 }, onError = { error ->
                     runOnUiThread {
                         Toast.makeText(this@LoginActivity, error, Toast.LENGTH_LONG).show()
