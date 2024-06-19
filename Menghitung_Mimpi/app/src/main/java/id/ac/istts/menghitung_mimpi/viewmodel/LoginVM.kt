@@ -1,9 +1,9 @@
 package id.ac.istts.menghitung_mimpi.viewmodel
 
+import id.ac.istts.menghitung_mimpi.viewmodel.API.Repository.LoginApiException
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Repository.LoginRepo
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.ViewModel
-import id.ac.istts.menghitung_mimpi.viewmodel.API.Repository.ApiException
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.Dispatchers
 
@@ -23,7 +23,7 @@ class LoginVM(private val loginRepo: LoginRepo): ViewModel() {
             result.onSuccess { response ->
                 onSuccess("Berhasil Login!!")
             }.onFailure { throwable ->
-                if (throwable is ApiException) {
+                if (throwable is LoginApiException) {
                     onError(throwable.message ?: "Unknown error")
                 } else {
                     onError(throwable.message ?: "Unknown error")

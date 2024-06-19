@@ -46,7 +46,7 @@ class LoginActivity : AppCompatActivity() {
             /*var email: String = etEmailLoginPage.text.toString()
             var password: String = etPasswordLoginPage.text.toString()
             coroutine.launch {
-                vm.login(email, password, onSuccess = {
+                vm.login(email, password, onSuccess = { message ->
                     runOnUiThread {
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
                         startActivity(intent)
