@@ -11,15 +11,4 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <action android:id="@+id/action_global_homeFragment" app:destination="@id/homeFragment"/>
-    <fragment
-        android:id="@+id/pernikahanFragment"
-        android:name="id.ac.istts.menghitung_mimpi.layout.PernikahanFragment"
-        android:label="fragment_pernikahan"
-        tools:layout="@layout/fragment_pernikahan" />
-    <action android:id="@+id/action_global_pernikahanFragment" app:destination="@id/pernikahanFragment" />
-    <fragment
-        android:id="@+id/kalkulatorInvestasiFragment"
-        android:name="id.ac.istts.menghitung_mimpi.layout.DanaDaruratFragment"
-        android:label="fragment_kalkulator_investasi"
-        tools:layout="@layout/fragment_dana_darurat" /><action android:id="@+id/action_global_kalkulatorInvestasiFragment" app:destination="@id/kalkulatorInvestasiFragment"/>
 </navigation>

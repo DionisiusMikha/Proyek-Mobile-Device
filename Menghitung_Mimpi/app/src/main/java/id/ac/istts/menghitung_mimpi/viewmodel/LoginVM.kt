@@ -17,7 +17,7 @@ class LoginVM(private val loginRepo: LoginRepo): ViewModel() {
 //
 //    private val apiService = retrofit.create(LoginService::class.java)
 
-    /*suspend fun login(email: String, password: String, onSuccess: (String) -> Unit, onError: (String) -> Unit) {
+    suspend fun login(email: String, password: String, onSuccess: (String) -> Unit, onError: (String) -> Unit) {
         viewModelScope.launch(Dispatchers.IO) {
             val result = loginRepo.login(email, password)
             result.onSuccess { response ->
@@ -30,5 +30,5 @@ class LoginVM(private val loginRepo: LoginRepo): ViewModel() {
                 }
             }
         }
-    }*/
+    }
 }
