@@ -1,3 +1,4 @@
 .env
 node_modules/
 Menghitung_Mimpi_API/menghitung_mimpi.sql
+Menghitung_Mimpi/app/src/main/java/id/ac/istts/menghitung_mimpi/viewmodel/API/Instance.kt
