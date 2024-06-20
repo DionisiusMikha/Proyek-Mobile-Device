@@ -131,6 +131,20 @@ const login = async (req, res) => {
   }
 };
 
+const getName = async (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+  const email = decoded.email;
+
+  const user = await Users.findOne({ where: { email } });
+  if (!user) {
+    return res.status(404).json({ message: "User is not registered" });
+  }
+
+  return res.status(200).json({name: user.full_name})
+}
+
 const authentication = async (req, res, next) => {
   // bearer token
   const authHeader = req.headers["authorization"];
@@ -145,11 +159,11 @@ const authentication = async (req, res, next) => {
 
   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
     if (err) {
-      return res.status(403).json({ message: "Token is not valid" });
+      return res.status(403).json({ name: "Token is not valid" });
     }
     req.user = user;
     next();
   });
 };
 
-module.exports = { register, login, authentication };
+module.exports = { register, login, authentication, getName };

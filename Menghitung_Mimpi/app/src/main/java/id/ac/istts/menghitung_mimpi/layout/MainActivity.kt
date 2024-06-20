@@ -10,6 +10,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import id.ac.istts.menghitung_mimpi.R
+import id.ac.istts.menghitung_mimpi.viewmodel.Token
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -18,10 +19,11 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        println(Token.getToken())
         setContentView(R.layout.activity_main)
-        container = findViewById(R.id.fragmentContainer)
-        bottomNavigation = findViewById(R.id.bottomNavigationView)
-        replaceFragment(PernikahanFragment())
+//        var container = findViewById(R.id.fragmentContainer)
+//        bottomNavigation = findViewById(R.id.bottomNavigationView)
+//        replaceFragment(PernikahanFragment())
 
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.fragmentContainer) as NavHostFragment
