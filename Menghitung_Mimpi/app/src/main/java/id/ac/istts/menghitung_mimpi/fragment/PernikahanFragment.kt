@@ -25,7 +25,7 @@ class PernikahanFragment : Fragment() {
     lateinit var etTargetInvestasi: EditText
     lateinit var etProdukRetur: EditText
     lateinit var etLamaInvestasi: EditText
-    lateinit var btnHitungMenikahActivity: Button
+    lateinit var btnHitungMenikah: Button
 
     private val vm: NikahVM by activityViewModels()
     val formatter = DecimalFormat("#,###")
@@ -48,7 +48,7 @@ class PernikahanFragment : Fragment() {
         etTargetInvestasi = view.findViewById(R.id.etTargetInvestasi)
         etProdukRetur = view.findViewById(R.id.etProdukRetur)
         etLamaInvestasi = view.findViewById(R.id.etLamaInvestasi)
-        btnHitungMenikahActivity = view.findViewById(R.id.btnHitungMenikahActivity)
+        btnHitungMenikah = view.findViewById(R.id.btnHitungMenikah)
 
         etTotalBiayaResepsi.addTextChangedListener(object : TextWatcher {
                 private var current: String? = ""
@@ -267,7 +267,7 @@ class PernikahanFragment : Fragment() {
                 }
             })
 
-        btnHitungMenikahActivity.setOnClickListener{
+        btnHitungMenikah.setOnClickListener{
             val biaya: Int = etTotalBiayaResepsi.text.toString().replace("[Rp,.]".toRegex(), "").toInt()
             val waktu: Int = etMenikahDalam.text.toString().replace("[Rp,.]".toRegex(), "").toInt()
             val inflasi: Int = etAsumsiInflasi.text.toString().replace("[Rp,.]".toRegex(), "").toInt()
