@@ -7,6 +7,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import id.ac.istts.menghitung_mimpi.R
+import id.ac.istts.menghitung_mimpi.fragment.CardFragment
+import id.ac.istts.menghitung_mimpi.fragment.HistoryFragment
+import id.ac.istts.menghitung_mimpi.fragment.HomeFragment
+import id.ac.istts.menghitung_mimpi.fragment.KalkulatorInvestasiFragment
+import id.ac.istts.menghitung_mimpi.fragment.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
     lateinit var container: FragmentContainerView
@@ -17,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         container = findViewById(R.id.fragmentContainer)
         bottomNavigation = findViewById(R.id.bottomNavigationView)
-        replaceFragment(KalkulatorInvestasiFragment())
 
         bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {

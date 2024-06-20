@@ -1,4 +1,4 @@
-package id.ac.istts.menghitung_mimpi.layout
+package id.ac.istts.menghitung_mimpi.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import id.ac.istts.menghitung_mimpi.R
 
-class ProfileFragment : Fragment() {
+class ResponseDanaDaruratFragment : Fragment() {
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        return inflater.inflate(R.layout.fragment_response_dana_darurat, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
