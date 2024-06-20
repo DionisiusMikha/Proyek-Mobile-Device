@@ -60,4 +60,11 @@ dependencies {
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3")
     implementation ("com.squareup.okhttp3:okhttp:4.9.3")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
+
+
+    /*AI*/
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.2")
+    implementation("io.coil-kt:coil-compose:2.4.8")
+    implementation("androidx.compose.material:material-icons-extended:1.6.8")
+    implementation("com.google.ai.client.generativeai:generativeai:0.8.0")
 }
