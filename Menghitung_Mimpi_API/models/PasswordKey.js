@@ -8,7 +8,7 @@ const PasswordKey = conn.define(
       type: DataTypes.STRING,
       primaryKey: true,
     },
-    id_user: {
+    id_user_FK: {
       type: DataTypes.STRING,
       allowNull: false,
     },
