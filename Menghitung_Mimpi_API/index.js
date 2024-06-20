@@ -10,9 +10,9 @@ const conn = require("./database/connection");
 
 app.use("/api", apiRouter);
 
-app.get('/', (req, res) => {
-  return res.status(200).send({message: "try"})
-})
+app.get("/", (req, res) => {
+  return res.status(200).send({ message: "try" });
+});
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not Found" });

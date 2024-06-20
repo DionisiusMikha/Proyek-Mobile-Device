@@ -142,8 +142,102 @@ const getName = async (req, res) => {
     return res.status(404).json({ message: "User is not registered" });
   }
 
-  return res.status(200).json({name: user.full_name})
-}
+  return res.status(200).json({ name: user.full_name });
+};
+
+const forgotPassword = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    if (!email) {
+      return res.status(400).json({ message: "Please fill all fields" });
+    }
+
+    const otp = Math.floor(100000 + Math.random() * 900000);
+    const user = await Users.findOne({ where: { email } });
+    if (!user) {
+      return res.status(404).json({ message: "User is not registered" });
+    }
+
+    const passwordKey = await PasswordKey.create({
+      id_pwkey: `PWK-${("000" + ((await PasswordKey.count()) + 1)).slice(-3)}`,
+      id_user_FK: user.id_user,
+      password_key: otp,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    sendEmail(
+      email,
+      "OTP to reset password",
+      `Your OTP to reset password is ${otp}`,
+      (status) => {
+        console.log("Email sent status: " + status);
+      }
+    );
+
+    return res.status(200).json({ message: "OTP sent to " + email });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+const cekOtp = async (req, res) => {
+  const { email, otp } = req.body;
+
+  try {
+    if (!email || !otp) {
+      return res.status(400).json({ message: "Please fill all fields" });
+    }
+
+    const user = await Users.findOne({ where: { email } });
+    if (!user) {
+      return res.status(404).json({ message: "User is not registered" });
+    }
+
+    const passwordKey = await PasswordKey.findOne({
+      where: { id_user_FK: user.id_user, password_key: otp },
+    });
+
+    if (!passwordKey) {
+      return res.status(400).json({ message: "OTP is invalid" });
+    }
+
+    passwordKey.destroy();
+
+    return res.status(200).json({ message: "OTP is valid" });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+const resetPassword = async (req, res) => {
+  const { email, password, confirm_password } = req.body;
+
+  try {
+    if (!email || !password || !confirm_password) {
+      return res.status(400).json({ message: "Please fill all fields" });
+    }
+
+    if (password !== confirm_password) {
+      return res.status(400).json({ message: "Password doesn't match" });
+    }
+
+    const user = await Users.findOne({ where: { email } });
+    if (!user) {
+      return res.status(404).json({ message: "User is not registered" });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    user.password = hashedPassword;
+    await user.save();
+
+    return res.status(200).json({ message: "Password reset successful" });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
 
 const authentication = async (req, res, next) => {
   // bearer token
@@ -166,4 +260,12 @@ const authentication = async (req, res, next) => {
   });
 };
 
-module.exports = { register, login, authentication, getName };
+module.exports = {
+  register,
+  login,
+  authentication,
+  getName,
+  forgotPassword,
+  cekOtp,
+  resetPassword,
+};
