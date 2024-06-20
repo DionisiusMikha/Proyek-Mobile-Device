@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         container = findViewById(R.id.fragmentContainer)
         bottomNavigation = findViewById(R.id.bottomNavigationView)
-        replaceFragment(KalkulatorInvestasiFragment())
+        replaceFragment(PernikahanFragment())
 
         bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {

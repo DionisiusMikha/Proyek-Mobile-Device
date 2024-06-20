@@ -11,6 +11,7 @@ import id.ac.istts.menghitung_mimpi.R
 import java.text.DecimalFormat
 
 class ResponseKalkulatorInvestasiFragment : Fragment() {
+    lateinit var textView82: TextView
     lateinit var tvResponseTextKalkulatorInvestasi1: TextView
     lateinit var tvTotalUangDibutuhkanKalkulatorInvestasiResponse: TextView
     lateinit var tvUangSaatIniResponseKalkulatorInvestasi: TextView
@@ -30,6 +31,7 @@ class ResponseKalkulatorInvestasiFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        textView82 = view.findViewById(R.id.textView82)
         tvResponseTextKalkulatorInvestasi1 = view.findViewById(R.id.tvResponseTextKalkulatorInvestasi1)
         tvTotalUangDibutuhkanKalkulatorInvestasiResponse = view.findViewById(R.id.tvTotalUangDibutuhkanKalkulatorInvestasiResponse)
         tvUangSaatIniResponseKalkulatorInvestasi = view.findViewById(R.id.tvUangSaatIniResponseKalkulatorInvestasi)
@@ -41,6 +43,7 @@ class ResponseKalkulatorInvestasiFragment : Fragment() {
         ivResponseEmoteKalkulatorInvestasi = view.findViewById(R.id.ivResponseEmoteKalkulatorInvestasi)
 
         val bundle = arguments
+        val type = bundle?.getInt("type")
         val target = bundle?.getInt("target")
         val uangSkrg = bundle?.getInt("uangSkrg")
         val invest = bundle?.getInt("invest")
@@ -50,7 +53,7 @@ class ResponseKalkulatorInvestasiFragment : Fragment() {
         val res: Boolean? = bundle?.getBoolean("res")
 
         val formatter = DecimalFormat("#,###")
-
+        if(type == 1) textView82.text = "Jumlah investasi / bulan" else textView82.text = "Jumlah investasi / tahun"
         if(res!!){
             tvResponseTextKalkulatorInvestasi1.text = "Strateginya cocok untuk mencapai mimpimu! \uD83D\uDE03\uD83C\uDF89"
             ivResponseEmoteKalkulatorInvestasi.setImageResource(R.drawable.loan_1)
@@ -61,8 +64,8 @@ class ResponseKalkulatorInvestasiFragment : Fragment() {
         tvTotalUangDibutuhkanKalkulatorInvestasiResponse.text = "Rp${formatter.format(target)}"
         tvUangSaatIniResponseKalkulatorInvestasi.text = "Rp${formatter.format(uangSkrg)}"
         tvJumlahInvestasiResponseKalkulatorInvestasi.text = "Rp${formatter.format(invest)}"
-        tvReturnInvestasiResponseKalkulatorInvestasi.text = formatter.format(presentase)
-        tvLamaInvestasiResponseKalkulatorInvestasi.text = formatter.format(waktu)
+        tvReturnInvestasiResponseKalkulatorInvestasi.text = "${formatter.format(presentase)}% / tahun"
+        tvLamaInvestasiResponseKalkulatorInvestasi.text = "${formatter.format(waktu)} tahun"
         tvHasilInvestasiResponseKalkulatorInvestasi.text = "Rp${formatter.format(final)}"
     }
 }

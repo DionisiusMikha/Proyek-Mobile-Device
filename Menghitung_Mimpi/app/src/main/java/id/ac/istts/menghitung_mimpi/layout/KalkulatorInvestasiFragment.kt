@@ -72,12 +72,23 @@ class KalkulatorInvestasiFragment : Fragment() {
                     etUangYangInginDicapai.removeTextChangedListener(this)
 
                     val cleanString = s.toString().replace("[Rp,.]".toRegex(), "")
-                    val parsed = cleanString.toDouble()
-                    val formatted = currencyFormatter.format(parsed)
 
-                    current = formatted
-                    etUangYangInginDicapai.setText(formatted)
-                    etUangYangInginDicapai.setSelection(formatted.length)
+                    if (cleanString.isNotEmpty()) {
+                        try {
+                            val parsed = cleanString.toDouble()
+                            val formatted = currencyFormatter.format(parsed)
+
+                            current = formatted
+                            etUangYangInginDicapai.setText(formatted)
+                            etUangYangInginDicapai.setSelection(formatted.length)
+                        } catch (e: NumberFormatException) {
+                            e.printStackTrace()
+                        }
+                    } else {
+                        current = ""
+                        etUangYangInginDicapai.setText("")
+                        etUangYangInginDicapai.setSelection(0)
+                    }
 
                     etUangYangInginDicapai.addTextChangedListener(this)
                 }
@@ -96,12 +107,23 @@ class KalkulatorInvestasiFragment : Fragment() {
                     etUangSaatIniKalkulatorInvestasi.removeTextChangedListener(this)
 
                     val cleanString = s.toString().replace("[Rp,.]".toRegex(), "")
-                    val parsed = cleanString.toDouble()
-                    val formatted = currencyFormatter.format(parsed)
 
-                    current = formatted
-                    etUangSaatIniKalkulatorInvestasi.setText(formatted)
-                    etUangSaatIniKalkulatorInvestasi.setSelection(formatted.length)
+                    if (cleanString.isNotEmpty()) {
+                        try {
+                            val parsed = cleanString.toDouble()
+                            val formatted = currencyFormatter.format(parsed)
+
+                            current = formatted
+                            etUangSaatIniKalkulatorInvestasi.setText(formatted)
+                            etUangSaatIniKalkulatorInvestasi.setSelection(formatted.length)
+                        } catch (e: NumberFormatException) {
+                            e.printStackTrace()
+                        }
+                    } else {
+                        current = ""
+                        etUangSaatIniKalkulatorInvestasi.setText("")
+                        etUangSaatIniKalkulatorInvestasi.setSelection(0)
+                    }
 
                     etUangSaatIniKalkulatorInvestasi.addTextChangedListener(this)
                 }
@@ -132,8 +154,8 @@ class KalkulatorInvestasiFragment : Fragment() {
             val presentase: Int = etReturProdukKalkulatorInvestasi.text.toString().toInt()
             vm.calculate(target, waktu, uangSkrg, type, range, 100000, presentase, onSuccess = { target, uangSkrg, invest, presentase, waktu, final, res ->
                 activity?.runOnUiThread {
-
                     val bundle = Bundle()
+                    bundle.putInt("type", type)
                     bundle.putInt("target", target)
                     bundle.putInt("uangSkrg", uangSkrg)
                     bundle.putInt("invest", invest)

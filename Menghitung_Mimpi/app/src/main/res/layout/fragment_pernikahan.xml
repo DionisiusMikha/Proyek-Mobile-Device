@@ -77,7 +77,7 @@
                 android:background="@drawable/rounded_corner_background"
                 android:ems="10"
                 android:inputType="text"
-                android:padding="10dp"
+                android:padding="15dp"
                 app:layout_constraintStart_toStartOf="@+id/textView34"
                 app:layout_constraintTop_toBottomOf="@+id/textView34" />
 
@@ -112,7 +112,7 @@
                 android:background="@drawable/rounded_corner_background"
                 android:ems="10"
                 android:inputType="text"
-                android:padding="10dp"
+                android:padding="15dp"
                 app:layout_constraintStart_toStartOf="@+id/textView36"
                 app:layout_constraintTop_toBottomOf="@+id/textView36" />
 
@@ -145,7 +145,7 @@
                 android:background="@drawable/rounded_corner_background"
                 android:ems="10"
                 android:inputType="text"
-                android:padding="10dp"
+                android:padding="15dp"
                 app:layout_constraintStart_toStartOf="@+id/textView38"
                 app:layout_constraintTop_toBottomOf="@+id/textView38" />
 
@@ -178,7 +178,8 @@
                 android:background="@drawable/rounded_corner_background"
                 android:ems="10"
                 android:inputType="text"
-                android:padding="10dp"
+                android:padding="15dp"
+                android:focusable="false"
                 app:layout_constraintStart_toStartOf="@+id/textView40"
                 app:layout_constraintTop_toBottomOf="@+id/textView40" />
 
@@ -233,7 +234,7 @@
                 android:background="@drawable/rounded_corner_background"
                 android:ems="10"
                 android:inputType="text"
-                android:padding="10dp"
+                android:padding="15dp"
                 app:layout_constraintStart_toStartOf="@+id/textView45"
                 app:layout_constraintTop_toBottomOf="@+id/textView45" />
 
@@ -254,7 +255,7 @@
                 android:background="@drawable/rounded_corner_background"
                 android:ems="10"
                 android:inputType="text"
-                android:padding="10dp"
+                android:padding="15dp"
                 app:layout_constraintStart_toStartOf="@+id/textView46"
                 app:layout_constraintTop_toBottomOf="@+id/textView46" />
 
@@ -275,7 +276,7 @@
                 android:background="@drawable/rounded_corner_background"
                 android:ems="10"
                 android:inputType="text"
-                android:padding="10dp"
+                android:padding="15dp"
                 app:layout_constraintStart_toStartOf="@+id/textView47"
                 app:layout_constraintTop_toBottomOf="@+id/textView47" />
 
@@ -307,7 +308,8 @@
                 android:background="@drawable/rounded_corner_background"
                 android:ems="10"
                 android:inputType="text"
-                android:padding="10dp"
+                android:padding="15dp"
+                android:focusable="false"
                 app:layout_constraintStart_toStartOf="@+id/textView49"
                 app:layout_constraintTop_toBottomOf="@+id/textView49" />
 
