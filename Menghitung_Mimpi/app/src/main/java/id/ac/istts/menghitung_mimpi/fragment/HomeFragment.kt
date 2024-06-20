@@ -50,29 +50,23 @@ class HomeFragment : Fragment() {
         }
 
         btn_DanaDarurat.setOnClickListener {
-            replaceFragment(DanaDaruratFragment())
+            findNavController().navigate(R.id.action_global_danaDaruratFragment)
         }
 
         btn_calcInves.setOnClickListener {
-            replaceFragment(KalkulatorInvestasiFragment())
+            findNavController().navigate(R.id.action_global_kalkulatorInvestasiFragment)
         }
 
         btn_Menikah.setOnClickListener {
-            replaceFragment(PernikahanFragment())
+            findNavController().navigate(R.id.action_global_pernikahanFragment)
         }
 
         btn_SpendAnalysis.setOnClickListener {
-            replaceFragment(SpendAnalysisFragment())
+            findNavController().navigate(R.id.action_global_spendAnalysisFragment)
         }
 
         btn_TanyaPenggu.setOnClickListener {
-            replaceFragment(ChatBotFragment())
+            findNavController().navigate(R.id.action_global_chatBotFragment)
         }
-    }
-    private fun replaceFragment(fragment: Fragment) {
-        val fragmentManager = parentFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
-        fragmentTransaction.commit()
     }
 }
