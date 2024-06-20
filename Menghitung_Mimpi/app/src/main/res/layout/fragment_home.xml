@@ -26,10 +26,10 @@
             android:text="Kalkulator Investasi"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.063"
+            app:layout_constraintHorizontal_bias="0.114"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.107" />
+            app:layout_constraintVertical_bias="0.104" />
 
         <Button
             android:id="@+id/btn_Menikah"
@@ -38,10 +38,10 @@
             android:text="Menikah"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.817"
+            app:layout_constraintHorizontal_bias="0.877"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.394" />
+            app:layout_constraintVertical_bias="0.384" />
 
         <Button
             android:id="@+id/btn_DanaDarurat"
@@ -50,10 +50,10 @@
             android:text="Dana Darurat"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.063"
+            app:layout_constraintHorizontal_bias="0.114"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.385" />
+            app:layout_constraintVertical_bias="0.382" />
 
         <Button
             android:id="@+id/btn_TanyaPenggu"
@@ -62,10 +62,10 @@
             android:text="Tanya Penggu"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.063"
+            app:layout_constraintHorizontal_bias="0.114"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.667" />
+            app:layout_constraintVertical_bias="0.65" />
 
         <Button
             android:id="@+id/btn_SpendAnalysis"
@@ -74,10 +74,10 @@
             android:text="Spend Analysis"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.817"
+            app:layout_constraintHorizontal_bias="0.877"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.105" />
+            app:layout_constraintVertical_bias="0.106" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -86,41 +86,42 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_semibold"
         android:text="Hi, Welcome Back"
+        android:textAlignment="textEnd"
         android:textColor="#052224"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.973"
+        app:layout_constraintHorizontal_bias="0.943"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.001" />
+        app:layout_constraintVertical_bias="0.019" />
 
     <TextView
         android:id="@+id/tvUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
         android:fontFamily="@font/poppins_semibold"
-        android:text="Good Morning"
+        android:textAlignment="textEnd"
         android:textColor="#052224"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.978"
+        app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintVertical_bias="0.052" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="83dp"
-        android:layout_height="81dp"
+        android:layout_width="86dp"
+        android:layout_height="63dp"
         android:src="@drawable/home_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.001" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView81"
@@ -132,9 +133,105 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.331"
+        app:layout_constraintHorizontal_bias="0.246"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.068" />
+        app:layout_constraintVertical_bias="0.048" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Target"
+        android:layout_width="403dp"
+        android:layout_height="141dp"
+        android:background="@drawable/rounded_target"
+        android:backgroundTint="#DFF7E2"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.112">
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Tabungan"
+            android:textColor="#093030"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.14"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.092" />
+
+        <TextView
+            android:id="@+id/textView107"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="128dp"
+            android:text="Target Tabungan"
+            android:textColor="#093030"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.083"
+            app:layout_constraintStart_toEndOf="@+id/textView28"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.092" />
+
+        <ImageView
+            android:id="@+id/imageView31"
+            android:layout_width="18dp"
+            android:layout_height="19dp"
+            android:src="@drawable/down"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView107"
+            app:layout_constraintHorizontal_bias="0.98"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.092" />
+
+        <ImageView
+            android:id="@+id/imageView30"
+            android:layout_width="18dp"
+            android:layout_height="19dp"
+            android:src="@drawable/income"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView28"
+            app:layout_constraintHorizontal_bias="0.73"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.092" />
+
+        <TextView
+            android:id="@+id/textView108"
+            android:layout_width="181dp"
+            android:layout_height="31dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Rp. 4.500.485"
+            android:textAlignment="textStart"
+            android:textColor="#052224"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.082"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.293" />
+
+        <TextView
+            android:id="@+id/textView109"
+            android:layout_width="162dp"
+            android:layout_height="33dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="- Rp. 300.000"
+            android:textAlignment="textStart"
+            android:textColor="#0068FF"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.284" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
