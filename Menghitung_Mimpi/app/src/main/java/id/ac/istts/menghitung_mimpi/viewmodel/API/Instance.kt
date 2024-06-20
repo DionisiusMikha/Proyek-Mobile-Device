@@ -5,6 +5,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Interface.AuthService
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Interface.LoginService
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Interface.RegisterService
+import id.ac.istts.menghitung_mimpi.viewmodel.API.Interface.SavingService
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Repository.ErrorHandlingInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -30,4 +31,5 @@ object RetrofitInstance {
     val apiLogin: LoginService = retrofit.create(LoginService::class.java)
     val apiRegister: RegisterService = retrofit.create(RegisterService::class.java)
     val apiAuth: AuthService = retrofit.create(AuthService::class.java)
+    val apiSave: SavingService = retrofit.create(SavingService::class.java)
 }

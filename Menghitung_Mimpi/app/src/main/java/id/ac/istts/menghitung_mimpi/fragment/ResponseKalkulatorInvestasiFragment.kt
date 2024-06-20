@@ -5,9 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import id.ac.istts.menghitung_mimpi.R
+import id.ac.istts.menghitung_mimpi.viewmodel.API.Factory.LoginFactory
+import id.ac.istts.menghitung_mimpi.viewmodel.API.Factory.SavingFactory
+import id.ac.istts.menghitung_mimpi.viewmodel.API.Repository.LoginRepo
+import id.ac.istts.menghitung_mimpi.viewmodel.API.Repository.SavingRepo
+import id.ac.istts.menghitung_mimpi.viewmodel.API.RetrofitInstance
+import id.ac.istts.menghitung_mimpi.viewmodel.SavingVM
+import id.ac.istts.menghitung_mimpi.viewmodel.Token
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.text.DecimalFormat
 
 class ResponseKalkulatorInvestasiFragment : Fragment() {
@@ -20,6 +33,12 @@ class ResponseKalkulatorInvestasiFragment : Fragment() {
     lateinit var tvLamaInvestasiResponseKalkulatorInvestasi: TextView
     lateinit var tvHasilInvestasiResponseKalkulatorInvestasi: TextView
     lateinit var ivResponseEmoteKalkulatorInvestasi: ImageView
+    lateinit var btnSimpanResponseKalkulatorInvestasi: Button
+
+    private val vm: SavingVM by activityViewModels {
+        SavingFactory(SavingRepo(RetrofitInstance.apiSave))
+    }
+    private val coroutine = CoroutineScope(Dispatchers.IO)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +60,7 @@ class ResponseKalkulatorInvestasiFragment : Fragment() {
         tvLamaInvestasiResponseKalkulatorInvestasi = view.findViewById(R.id.tvLamaInvestasiResponseKalkulatorInvestasi)
         tvHasilInvestasiResponseKalkulatorInvestasi = view.findViewById(R.id.tvHasilInvestasiResponseKalkulatorInvestasi)
         ivResponseEmoteKalkulatorInvestasi = view.findViewById(R.id.ivResponseEmoteKalkulatorInvestasi)
+        btnSimpanResponseKalkulatorInvestasi = view.findViewById(R.id.btnSimpanResponseKalkulatorInvestasi)
 
         val bundle = arguments
         val type = bundle?.getInt("type")
@@ -67,5 +87,27 @@ class ResponseKalkulatorInvestasiFragment : Fragment() {
         tvReturnInvestasiResponseKalkulatorInvestasi.text = "${formatter.format(presentase)}% / tahun"
         tvLamaInvestasiResponseKalkulatorInvestasi.text = "${formatter.format(waktu)} tahun"
         tvHasilInvestasiResponseKalkulatorInvestasi.text = "Rp${formatter.format(final)}"
+
+        btnSimpanResponseKalkulatorInvestasi.setOnClickListener{
+            coroutine.launch {
+                vm.saveInvest(Token.getToken()!!, target!!, waktu!!, uangSkrg!!, invest!!, presentase!!, final!!, type!!, res, onSuccess = { message ->
+                    activity?.runOnUiThread{
+                        Toast.makeText(requireContext(), "Berhasil menyimpan!!", Toast.LENGTH_SHORT).show()
+                        goToFragment(HomeFragment())
+                    }
+                }, onError = { error ->
+                    activity?.runOnUiThread{
+                        Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
+                    }
+                })
+            }
+        }
+    }
+
+    private fun goToFragment(fragment: Fragment) {
+        val transaction = requireActivity().supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragmentContainer, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 }
