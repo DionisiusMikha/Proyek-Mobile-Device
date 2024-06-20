@@ -24,7 +24,14 @@ class CardFragment : Fragment() {
         ivCard = view.findViewById(R.id.ivCard)
 
         ivCard.setOnClickListener{
-            findNavController().navigate(R.id.action_global_cardOnTapFragment)
+            replaceFragment(CardOnTapFragment())
         }
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = parentFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
+        fragmentTransaction.commit()
     }
 }
