@@ -1,4 +1,4 @@
-package id.ac.istts.menghitung_mimpi.layout
+package id.ac.istts.menghitung_mimpi.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

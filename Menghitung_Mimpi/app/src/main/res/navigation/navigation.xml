@@ -7,19 +7,89 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="id.ac.istts.menghitung_mimpi.layout.HomeFragment"
+        android:name="id.ac.istts.menghitung_mimpi.fragment.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
-    <action android:id="@+id/action_global_homeFragment" app:destination="@id/homeFragment"/>
+        tools:layout="@layout/fragment_home"/>
+
     <fragment
         android:id="@+id/pernikahanFragment"
-        android:name="id.ac.istts.menghitung_mimpi.layout.PernikahanFragment"
+        android:name="id.ac.istts.menghitung_mimpi.fragment.PernikahanFragment"
         android:label="fragment_pernikahan"
         tools:layout="@layout/fragment_pernikahan" />
-    <action android:id="@+id/action_global_pernikahanFragment" app:destination="@id/pernikahanFragment" />
+
+    <fragment
+        android:id="@+id/danaDaruratFragment"
+        android:name="id.ac.istts.menghitung_mimpi.fragment.DanaDaruratFragment"
+        android:label="fragment_dana_darurat"
+        tools:layout="@layout/fragment_dana_darurat" />
+
     <fragment
         android:id="@+id/kalkulatorInvestasiFragment"
-        android:name="id.ac.istts.menghitung_mimpi.layout.DanaDaruratFragment"
+        android:name="id.ac.istts.menghitung_mimpi.fragment.KalkulatorInvestasiFragment"
         android:label="fragment_kalkulator_investasi"
-        tools:layout="@layout/fragment_dana_darurat" /><action android:id="@+id/action_global_kalkulatorInvestasiFragment" app:destination="@id/kalkulatorInvestasiFragment"/>
+        tools:layout="@layout/fragment_kalkulator_investasi" />
+
+    <fragment
+        android:id="@+id/cardFragment2"
+        android:name="id.ac.istts.menghitung_mimpi.fragment.CardFragment"
+        android:label="fragment_card"
+        tools:layout="@layout/fragment_card" />
+
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="id.ac.istts.menghitung_mimpi.fragment.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+
+    <fragment
+        android:id="@+id/profileFragment2"
+        android:name="id.ac.istts.menghitung_mimpi.fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/spendAnalysisFragment"
+        android:name="id.ac.istts.menghitung_mimpi.fragment.SpendAnalysisFragment"
+        android:label="fragment_spend_analysis"
+        tools:layout="@layout/fragment_spend_analysis" />
+
+    <fragment
+        android:id="@+id/chatBotFragment"
+        android:name="id.ac.istts.menghitung_mimpi.fragment.ChatBotFragment"
+        android:label="fragment_chat_bot"
+        tools:layout="@layout/fragment_chat_bot" />
+
+    <fragment
+        android:id="@+id/responseDanaDaruratFragment"
+        android:name="id.ac.istts.menghitung_mimpi.fragment.ResponseDanaDaruratFragment"
+        android:label="fragment_response_dana_darurat"
+        tools:layout="@layout/fragment_response_dana_darurat" />
+
+    <fragment
+        android:id="@+id/responseMenikahFragment"
+        android:name="id.ac.istts.menghitung_mimpi.fragment.ResponseMenikahFragment"
+        android:label="fragment_response_menikah"
+        tools:layout="@layout/fragment_response_menikah" />
+
+    <fragment
+        android:id="@+id/cardOnTapFragment"
+        android:name="id.ac.istts.menghitung_mimpi.fragment.CardOnTapFragment"
+        android:label="fragment_card_on_tap"
+        tools:layout="@layout/fragment_card_on_tap" />
+    <fragment
+        android:id="@+id/responseKalkulatorInvestasiFragment"
+        android:name="id.ac.istts.menghitung_mimpi.fragment.ResponseKalkulatorInvestasiFragment"
+        android:label="fragment_response_kalkulator_infestasi"
+        tools:layout="@layout/fragment_response_kalkulator_infestasi" />
+    <action android:id="@+id/action_global_homeFragment" app:destination="@id/homeFragment" />
+    <action android:id="@+id/action_global_profileFragment" app:destination="@id/profileFragment2" />
+    <action android:id="@+id/action_global_historyFragment" app:destination="@id/historyFragment" />
+    <action android:id="@+id/action_global_cardOnTapFragment" app:destination="@id/cardOnTapFragment" />
+    <action android:id="@+id/action_global_cardFragment" app:destination="@id/cardFragment2" />
+    <action android:id="@+id/action_global_spendAnalysisFragment" app:destination="@id/spendAnalysisFragment" />
+    <action android:id="@+id/action_global_chatBotFragment" app:destination="@id/chatBotFragment" />
+    <action android:id="@+id/action_global_kalkulatorInvestasiFragment" app:destination="@id/kalkulatorInvestasiFragment" />
+    <action android:id="@+id/action_global_danaDaruratFragment" app:destination="@id/danaDaruratFragment" />
+    <action android:id="@+id/action_global_pernikahanFragment" app:destination="@id/pernikahanFragment" />
+
 </navigation>

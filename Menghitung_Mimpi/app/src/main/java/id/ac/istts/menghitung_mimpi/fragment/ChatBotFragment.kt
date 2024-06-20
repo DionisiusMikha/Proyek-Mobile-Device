@@ -1,4 +1,4 @@
-package id.ac.istts.menghitung_mimpi.layout
+package id.ac.istts.menghitung_mimpi.fragment
 
 import android.os.Bundle
 import android.text.Editable
@@ -16,25 +16,12 @@ import id.ac.istts.menghitung_mimpi.viewmodel.DanaDaruratVM
 import java.text.DecimalFormat
 import java.text.NumberFormat
 
-class DanaDaruratFragment : Fragment() {
-    lateinit var etPengeluaranWajibTiapBulan: EditText
-    lateinit var etJumlahTanggungan: EditText
-    lateinit var etTargetBulanDanaDarurat: EditText
-    lateinit var etJumlahDanaDaruratSaatIni: EditText
-    lateinit var etTargetInvestasiDanaDarurat: EditText
-    lateinit var etProdukReturDanaDarurat: EditText
-    lateinit var btnSudahMenikah: Button
-    lateinit var btnBelumMenikah: Button
-    lateinit var btnHitungDanaDarurat: Button
-
-    private val vm: DanaDaruratVM by activityViewModels()
-    var statusMenikah = -1
-
+class ChatBotFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_dana_darurat, container, false)
+        return inflater.inflate(R.layout.fragment_chat_bot, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

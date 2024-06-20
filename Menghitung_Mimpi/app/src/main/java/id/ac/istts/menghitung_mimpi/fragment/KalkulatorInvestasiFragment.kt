@@ -1,10 +1,5 @@
-package id.ac.istts.menghitung_mimpi.layout
+package id.ac.istts.menghitung_mimpi.fragment
 
-import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -14,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import id.ac.istts.menghitung_mimpi.R

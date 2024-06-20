@@ -7,20 +7,20 @@
         android:title="Home"
         android:icon="@drawable/icon_home"/>
     <item
-        android:id="@+id/riwayatFragment"
+        android:id="@+id/historyFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:title="Riwayat"
         android:icon="@drawable/riwayat" />
     <item
-        android:id="@+id/cardFragment"
+        android:id="@+id/cardFragment2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:title="Card"
         android:icon="@drawable/tabungan" />
 
     <item
-        android:id="@+id/profileFragment"
+        android:id="@+id/profileFragment2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:title="Akun"

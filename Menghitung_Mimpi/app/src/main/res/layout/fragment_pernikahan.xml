@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".layout.PernikahanFragment">
+    tools:context=".fragment.PernikahanFragment">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -325,7 +325,7 @@
                 app:layout_constraintTop_toTopOf="@+id/etLamaInvestasi" />
 
             <Button
-                android:id="@+id/btnHitungMenikahActivity"
+                android:id="@+id/btnHitungMenikah"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
