@@ -39,10 +39,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
-    buildTypes.forEach {
-        it.buildConfigField("String", "GEMINI_API_KEY", "\"${project.findProperty("GEMINI_API_KEY")}\"")
-    }
 }
 
 dependencies {
