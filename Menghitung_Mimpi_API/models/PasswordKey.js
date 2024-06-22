@@ -16,6 +16,10 @@ const PasswordKey = conn.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    status: {
+      type: DataTypes.INTEGER, // 0 = not used, 1 = used
+      allowNull: false,
+    },
   },
   {
     freezeTableName: true,
