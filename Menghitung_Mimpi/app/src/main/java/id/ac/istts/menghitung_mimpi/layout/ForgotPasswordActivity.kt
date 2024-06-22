@@ -41,6 +41,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
                     runOnUiThread{
                         Toast.makeText(this@ForgotPasswordActivity, message, Toast.LENGTH_LONG).show()
                         val intent = Intent(this@ForgotPasswordActivity, SecurityPinActivity::class.java)
+                        intent.putExtra("email", email)
                         startActivity(intent)
                         finish()
                     }

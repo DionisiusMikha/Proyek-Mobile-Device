@@ -51,3 +51,16 @@ data class SavingNikahRequest(
 data class SavingNikahResponse<T>(
     @Json(name = "message") val message: String
 )
+
+@JsonClass(generateAdapter = true)
+data class Invest(
+    @Json(name = "target") val target: Int,
+    @Json(name = "waktu") val waktu: Int,
+    @Json(name = "uang_sekarang") val uangSekarang: Int,
+    @Json(name = "invest") val invest: Int,
+    @Json(name = "presentase") val presentase: Int,
+    @Json(name = "final") val finalAmount: Int,
+    @Json(name = "type") val type: Int,
+    @Json(name = "status") val status: Boolean,
+    @Json(name = "createdAt") val createdAt: String
+)

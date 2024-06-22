@@ -2,6 +2,7 @@ package id.ac.istts.menghitung_mimpi.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.Invest
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Repository.ApiException
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Repository.SavingRepo
 import kotlinx.coroutines.Dispatchers
@@ -44,6 +45,22 @@ class SavingVM(private val savingRepo: SavingRepo): ViewModel() {
             val result = savingRepo.saveNikah(token, biaya_final, uang_sekarang, invest, presentase, waktu, total_final, status)
             result.onSuccess { response ->
                 onSuccess("Berhasil menyimpan!!")
+            }.onFailure { throwable ->
+                if (throwable is ApiException) {
+                    onError(throwable.message ?: "Unknown error")
+                } else {
+                    onError(throwable.message ?: "Unknown error")
+                }
+            }
+        }
+    }
+
+    suspend fun getInvest(token: String, onSuccess: (List<Invest>) -> Unit, onError: (String) -> Unit ) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = savingRepo.getInvest(token)
+            result.onSuccess { response ->
+                println(response)
+                onSuccess(response)
             }.onFailure { throwable ->
                 if (throwable is ApiException) {
                     onError(throwable.message ?: "Unknown error")

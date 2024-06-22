@@ -1,5 +1,6 @@
 package id.ac.istts.menghitung_mimpi.viewmodel.API.Interface
 
+import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.Invest
 import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.SavingDanaDaruratRequest
 import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.SavingDanaDaruratResponse
 import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.SavingInvestRequest
@@ -7,6 +8,7 @@ import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.SavingInvestResponse
 import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.SavingNikahRequest
 import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.SavingNikahResponse
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 
@@ -28,4 +30,9 @@ interface SavingService {
         @Header("authorization") authorization: String?,
         @Body savingNikahRequest: SavingNikahRequest
     ): SavingNikahResponse<Any>
+
+    @GET("users/get-investasi")
+    suspend fun getInvest(
+        @Header("authorization") authorization: String?
+    ): List<Invest>
 }

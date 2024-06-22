@@ -23,4 +23,34 @@ class ForgotPasswordVM(private val forgotPasswordRepo: ForgotPasswordRepo): View
             }
         }
     }
+
+    suspend fun cekOTP(email: String, otp: String, onSuccess: (String) -> Unit, onError: (String) -> Unit){
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = forgotPasswordRepo.cekOTP(email, otp)
+            result.onSuccess { response ->
+                onSuccess(response.message)
+            }.onFailure { throwable ->
+                if (throwable is ApiException) {
+                    onError(throwable.message ?: "Unknown error")
+                } else {
+                    onError(throwable.message ?: "Unknown error")
+                }
+            }
+        }
+    }
+
+    suspend fun resetPassword(email: String, password: String, confirm_password: String, onSuccess: (String) -> Unit, onError: (String) -> Unit){
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = forgotPasswordRepo.resetPassword(email, password, confirm_password)
+            result.onSuccess { response ->
+                onSuccess(response.message)
+            }.onFailure { throwable ->
+                if (throwable is ApiException) {
+                    onError(throwable.message ?: "Unknown error")
+                } else {
+                    onError(throwable.message ?: "Unknown error")
+                }
+            }
+        }
+    }
 }

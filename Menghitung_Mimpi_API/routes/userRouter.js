@@ -11,6 +11,9 @@ const {
   saveInvest,
   saveDarurat,
   saveNikah,
+  getInvestasi,
+  getDanaDarurat,
+  getNikah,
   forgotPassword,
   cekOtp,
   resetPassword,
@@ -26,6 +29,9 @@ const limiter = rateLimit({
 
 router.post("/forgot-password", limiter, forgotPassword);
 router.get("/get-name", authentication, getName);
+router.get("/get-investasi", authentication, getInvestasi);
+router.get("/get-dana-darurat", authentication, getDanaDarurat);
+router.get("/get-nikah", authentication, getNikah);
 router.post("/register", register);
 router.post("/login", login);
 router.post("/save-invest", authentication, saveInvest);

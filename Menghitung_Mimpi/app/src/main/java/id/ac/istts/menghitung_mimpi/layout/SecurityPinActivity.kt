@@ -1,12 +1,22 @@
 package id.ac.istts.menghitung_mimpi.layout
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
+import androidx.activity.viewModels
 import id.ac.istts.menghitung_mimpi.R
+import id.ac.istts.menghitung_mimpi.viewmodel.API.Factory.ForgotPasswordFactory
+import id.ac.istts.menghitung_mimpi.viewmodel.API.Repository.ForgotPasswordRepo
+import id.ac.istts.menghitung_mimpi.viewmodel.API.RetrofitInstance
+import id.ac.istts.menghitung_mimpi.viewmodel.ForgotPasswordVM
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class SecurityPinActivity : AppCompatActivity() {
     lateinit var etPin1: EditText
@@ -17,6 +27,12 @@ class SecurityPinActivity : AppCompatActivity() {
     lateinit var etPin6: EditText
     lateinit var btnAccept: Button
     lateinit var btnSendAgain: Button
+
+    private val vm: ForgotPasswordVM by viewModels {
+        ForgotPasswordFactory(ForgotPasswordRepo(RetrofitInstance.apiPassword))
+    }
+    private val coroutine = CoroutineScope(Dispatchers.IO)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_security_pin)
@@ -30,10 +46,33 @@ class SecurityPinActivity : AppCompatActivity() {
         btnAccept = findViewById(R.id.btnAccept)
         btnSendAgain = findViewById(R.id.btnSendAgain)
 
+        val email: String? = intent.getStringExtra("email")
+
         setupEditTexts()
 
         btnAccept.setOnClickListener{
+            val pin1: String = etPin1.text.toString()
+            val pin2: String = etPin2.text.toString()
+            val pin3: String = etPin3.text.toString()
+            val pin4: String = etPin4.text.toString()
+            val pin5: String = etPin5.text.toString()
+            val pin6: String = etPin6.text.toString()
+            var otp: String = pin1 + pin2 + pin3 + pin4 + pin5 + pin6
 
+            coroutine.launch {
+                vm.cekOTP(email!!, otp, onSuccess = { message ->
+                    runOnUiThread{
+                        val intent = Intent(this@SecurityPinActivity, NewPasswordActivity::class.java)
+                        intent.putExtra("email", email)
+                        startActivity(intent)
+                        finish()
+                    }
+                }, onError = { error ->
+                    runOnUiThread{
+                        Toast.makeText(this@SecurityPinActivity,  error, Toast.LENGTH_LONG).show()
+                    }
+                })
+            }
         }
 
         btnSendAgain.setOnClickListener{

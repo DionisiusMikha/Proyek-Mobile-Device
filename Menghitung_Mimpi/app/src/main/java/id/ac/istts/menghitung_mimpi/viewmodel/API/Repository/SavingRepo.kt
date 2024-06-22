@@ -1,5 +1,6 @@
 package id.ac.istts.menghitung_mimpi.viewmodel.API.Repository
 
+import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.Invest
 import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.SavingDanaDaruratRequest
 import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.SavingDanaDaruratResponse
 import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.SavingInvestRequest
@@ -34,6 +35,17 @@ class SavingRepo  (private val savingService: SavingService) {
     suspend fun saveNikah(token: String, biaya_final: Int, uang_sekarang: Int, invest: Int, presentase: Int, waktu: Int, total_final: Int, status: Boolean): Result<SavingNikahResponse<Any>> {
         return try {
             val response = savingService.saveNikah("Bearer ${token}", SavingNikahRequest(biaya_final, uang_sekarang, invest, presentase, waktu, total_final, status))
+            Result.success(response)
+        } catch (e: ApiException) {
+            Result.failure(e)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun getInvest(token: String): Result<List<Invest>> {
+        return try {
+            val response = savingService.getInvest("Bearer ${token}")
             Result.success(response)
         } catch (e: ApiException) {
             Result.failure(e)

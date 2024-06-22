@@ -1,9 +1,9 @@
 const Users = require("../models/UserModel");
 const Invest = require("../models/Investasi");
 const DanaDarurat = require("../models/DanaDarurat");
+const PasswordKey = require("../models/PasswordKey");
 const Nikah = require("../models/Nikah");
 const jwt = require("jsonwebtoken");
-const PasswordKey = require("../models/PasswordKey");
 const bcrypt = require("bcrypt");
 const Joi = require("joi").extend(require("@joi/date"));
 const nodemailer = require("nodemailer");
@@ -150,7 +150,6 @@ const getName = async (req, res) => {
 
 const forgotPassword = async (req, res) => {
   const { email } = req.body;
-  console.log(email)
 
   try {
     if (!email) {
@@ -162,7 +161,6 @@ const forgotPassword = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User is not registered" });
     }
-
     const passwordKey = await PasswordKey.create({
       id_pwkey: `PWK-${("000" + ((await PasswordKey.count()) + 1)).slice(-3)}`,
       id_user_FK: user.id_user,
@@ -182,6 +180,7 @@ const forgotPassword = async (req, res) => {
 
     return res.status(200).json({ message: "OTP sent to " + email });
   } catch (error) {
+    console.error(error)
     return res.status(500).json({ message: error.message });
   }
 };
@@ -346,6 +345,74 @@ const saveNikah = async (req, res) => {
   }
 }
 
+const getInvestasi = async (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+  const email = decoded.email;
+
+  const user = await Users.findOne({ where: { email } });
+  if (!user) {
+    return res.status(404).json({ message: "User is not registered" });
+  }
+
+  try {
+    const investasi = await Invest.findAll({ 
+      where: { id_user: user.id_user },
+      attributes: ["target", "waktu", "uang_sekarang", "invest", "presentase", "final", "type", "status", "createdAt"]
+    })
+
+    return res.status(200).json(investasi)
+  } catch (error) {
+    return res.status(500).json({message: error.message})
+  }
+}
+
+const getDanaDarurat = async (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+  const email = decoded.email;
+
+  const user = await Users.findOne({ where: { email } });
+  if (!user) {
+    return res.status(404).json({ message: "User is not registered" });
+  }
+
+  try {
+    const dana_darurat = await DanaDarurat.findAll({ 
+      where: { id_user: user.id_user },
+      attributes: ["dana_darurat", "dana_sekarang", "lama", "invest", "presentase", "total", "status", "createdAt"]
+    })
+
+    return res.status(200).json({dana_darurat})
+  } catch (error) {
+    return res.status(500).json({message: error.message})
+  }
+}
+
+const getNikah = async (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+  const email = decoded.email;
+
+  const user = await Users.findOne({ where: { email } });
+  if (!user) {
+    return res.status(404).json({ message: "User is not registered" });
+  }
+
+  try {
+    const nikah = await Nikah.findAll({ 
+      where: { id_user: user.id_user },
+      attributes: ["biaya_final", "uang_sekarang", "invest", "presentase", "waktu", "total_final", "status", "createdAt"]
+    })
+    return res.status(200).json({nikah})
+  } catch (error) {
+    return res.status(500).json({message: error.message})
+  }
+}
+
 const authentication = async (req, res, next) => {
   // bearer token
   const authHeader = req.headers["authorization"];
@@ -375,6 +442,9 @@ module.exports = {
   saveInvest,
   saveDarurat,
   saveNikah,
+  getInvestasi,
+  getDanaDarurat,
+  getNikah,
   forgotPassword,
   cekOtp,
   resetPassword,
