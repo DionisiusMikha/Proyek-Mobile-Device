@@ -150,7 +150,7 @@ const getName = async (req, res) => {
 
 const forgotPassword = async (req, res) => {
   const { email } = req.body;
-  console.log(email)
+  console.log(email);
 
   try {
     if (!email) {
@@ -167,6 +167,7 @@ const forgotPassword = async (req, res) => {
       id_pwkey: `PWK-${("000" + ((await PasswordKey.count()) + 1)).slice(-3)}`,
       id_user_FK: user.id_user,
       password_key: otp,
+      status: 0,
       createdAt: new Date(),
       updatedAt: new Date(),
     });
@@ -182,6 +183,7 @@ const forgotPassword = async (req, res) => {
 
     return res.status(200).json({ message: "OTP sent to " + email });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ message: error.message });
   }
 };
@@ -207,7 +209,8 @@ const cekOtp = async (req, res) => {
       return res.status(400).json({ message: "OTP is invalid" });
     }
 
-    passwordKey.destroy();
+    passwordKey.status = 1;
+    await passwordKey.save();
 
     return res.status(200).json({ message: "OTP is valid" });
   } catch (error) {
@@ -244,7 +247,16 @@ const resetPassword = async (req, res) => {
 };
 
 const saveInvest = async (req, res) => {
-  const {target, waktu, uang_sekarang, invest, presentase, final, type, status} = req.body
+  const {
+    target,
+    waktu,
+    uang_sekarang,
+    invest,
+    presentase,
+    final,
+    type,
+    status,
+  } = req.body;
   const token = req.headers.authorization.split(" ")[1];
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
@@ -276,10 +288,18 @@ const saveInvest = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: err.message });
   }
-}
+};
 
 const saveDarurat = async (req, res) => {
-  const {dana_darurat, dana_sekarang, lama, invest, presentase, total, status} = req.body
+  const {
+    dana_darurat,
+    dana_sekarang,
+    lama,
+    invest,
+    presentase,
+    total,
+    status,
+  } = req.body;
   const token = req.headers.authorization.split(" ")[1];
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
@@ -310,10 +330,18 @@ const saveDarurat = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: err.message });
   }
-}
+};
 
 const saveNikah = async (req, res) => {
-  const {biaya_final, uang_sekarang, invest, presentase, waktu, total_final, status} = req.body
+  const {
+    biaya_final,
+    uang_sekarang,
+    invest,
+    presentase,
+    waktu,
+    total_final,
+    status,
+  } = req.body;
   const token = req.headers.authorization.split(" ")[1];
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
@@ -344,7 +372,7 @@ const saveNikah = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: err.message });
   }
-}
+};
 
 const authentication = async (req, res, next) => {
   // bearer token
