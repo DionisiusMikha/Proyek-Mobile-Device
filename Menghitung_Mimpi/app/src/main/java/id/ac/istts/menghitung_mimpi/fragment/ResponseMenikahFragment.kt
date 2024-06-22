@@ -9,7 +9,17 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import id.ac.istts.menghitung_mimpi.R
+import id.ac.istts.menghitung_mimpi.viewmodel.API.Factory.SavingFactory
+import id.ac.istts.menghitung_mimpi.viewmodel.API.Repository.SavingRepo
+import id.ac.istts.menghitung_mimpi.viewmodel.API.RetrofitInstance
+import id.ac.istts.menghitung_mimpi.viewmodel.SavingVM
+import id.ac.istts.menghitung_mimpi.viewmodel.Token
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.text.DecimalFormat
 
 class ResponseMenikahFragment : Fragment() {
@@ -22,6 +32,11 @@ class ResponseMenikahFragment : Fragment() {
     lateinit var tvHasilInvestasiResponseMenikah: TextView
     lateinit var btnSimpanResponseMenikah: Button
     lateinit var ivResponseEmoteMenikah: ImageView
+
+    private val vm: SavingVM by activityViewModels {
+        SavingFactory(SavingRepo(RetrofitInstance.apiSave))
+    }
+    private val coroutine = CoroutineScope(Dispatchers.IO)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +57,7 @@ class ResponseMenikahFragment : Fragment() {
         tvHasilInvestasiResponseMenikah = view.findViewById(R.id.tvHasilInvestasiResponseMenikah)
         btnSimpanResponseMenikah = view.findViewById(R.id.btnSimpanResponseMenikah)
         ivResponseEmoteMenikah = view.findViewById(R.id.ivResponseEmoteMenikah)
+        btnSimpanResponseMenikah = view.findViewById(R.id.btnSimpanResponseMenikah)
 
         val bundle = arguments
         val biayaFinal = bundle?.getInt("biayaFinal")
@@ -66,5 +82,26 @@ class ResponseMenikahFragment : Fragment() {
         tcReturnInvestasiResponseMenikah.text = "${formatter.format(presentase)}% / tahun"
         tvLamaInvestasiResponseMenikah.text = "${formatter.format(waktu)} tahun"
         tvHasilInvestasiResponseMenikah.text = "Rp${formatter.format(totalFinal)}"
+
+        btnSimpanResponseMenikah.setOnClickListener {
+            coroutine.launch {
+                vm.saveNikah(Token.getToken()!!, biayaFinal!!, uangSkrg!!, invest!!, presentase!!, waktu!!, totalFinal!!, status, onSuccess = { message ->
+                    activity?.runOnUiThread{
+                        Toast.makeText(requireContext(), "Berhasil menyimpan!!", Toast.LENGTH_SHORT).show()
+                        popBackStackTwice()
+                    }
+                }, onError = { error ->
+                    activity?.runOnUiThread{
+                        Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
+                    }
+                })
+            }
+        }
+    }
+
+    private fun popBackStackTwice() {
+        val fragmentManager = requireActivity().supportFragmentManager
+        fragmentManager.popBackStackImmediate() // First pop
+        fragmentManager.popBackStackImmediate() // Second pop
     }
 }

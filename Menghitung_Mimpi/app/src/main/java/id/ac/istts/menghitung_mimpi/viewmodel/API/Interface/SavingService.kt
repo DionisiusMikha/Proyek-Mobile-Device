@@ -17,7 +17,7 @@ interface SavingService {
         @Body savingInvestRequest: SavingInvestRequest
     ): SavingInvestResponse<Any>
 
-    @POST("users/save-dana-darurat")
+    @POST("users/save-darurat")
     suspend fun saveDanaDarurat(
         @Header("authorization") authorization: String?,
         @Body savingDanaDaruratRequest: SavingDanaDaruratRequest

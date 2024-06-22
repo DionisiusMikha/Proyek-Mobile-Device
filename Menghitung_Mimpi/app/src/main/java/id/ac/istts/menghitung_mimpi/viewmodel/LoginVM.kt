@@ -21,7 +21,6 @@ class LoginVM(private val loginRepo: LoginRepo): ViewModel() {
     suspend fun login(email: String, password: String, onSuccess: (String) -> Unit, onError: (String) -> Unit) {
         viewModelScope.launch(Dispatchers.IO) {
             val result = loginRepo.login(email, password)
-            println(result)
             result.onSuccess { response ->
                 withContext(Dispatchers.Main) {
                     Token.setToken(response.token)

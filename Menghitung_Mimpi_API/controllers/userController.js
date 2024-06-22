@@ -1,6 +1,7 @@
 const Users = require("../models/UserModel");
 const Invest = require("../models/Investasi");
 const DanaDarurat = require("../models/DanaDarurat");
+const Nikah = require("../models/Nikah");
 const jwt = require("jsonwebtoken");
 const PasswordKey = require("../models/PasswordKey");
 const bcrypt = require("bcrypt");
@@ -149,6 +150,7 @@ const getName = async (req, res) => {
 
 const forgotPassword = async (req, res) => {
   const { email } = req.body;
+  console.log(email)
 
   try {
     if (!email) {
@@ -311,7 +313,7 @@ const saveDarurat = async (req, res) => {
 }
 
 const saveNikah = async (req, res) => {
-  const {target, waktu, uang_sekarang, invest, presentase, final, type, status} = req.body
+  const {biaya_final, uang_sekarang, invest, presentase, waktu, total_final, status} = req.body
   const token = req.headers.authorization.split(" ")[1];
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
@@ -323,15 +325,14 @@ const saveNikah = async (req, res) => {
   }
 
   try {
-    const result = await Invest.create({
+    const result = await Nikah.create({
       id_user: user.id_user,
-      target,
-      waktu,
+      biaya_final,
       uang_sekarang,
       invest,
       presentase,
-      final,
-      type,
+      waktu,
+      total_final,
       status,
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -373,6 +374,7 @@ module.exports = {
   getName,
   saveInvest,
   saveDarurat,
+  saveNikah,
   forgotPassword,
   cekOtp,
   resetPassword,

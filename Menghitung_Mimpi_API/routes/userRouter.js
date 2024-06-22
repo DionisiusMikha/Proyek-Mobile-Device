@@ -9,6 +9,8 @@ const {
   authentication,
   getName,
   saveInvest,
+  saveDarurat,
+  saveNikah,
   forgotPassword,
   cekOtp,
   resetPassword,
@@ -27,6 +29,8 @@ router.get("/get-name", authentication, getName);
 router.post("/register", register);
 router.post("/login", login);
 router.post("/save-invest", authentication, saveInvest);
+router.post("/save-darurat", authentication, saveDarurat);
+router.post("/save-nikah", authentication, saveNikah);
 router.post("/cek-otp", cekOtp);
 router.post("/reset-password", resetPassword);
 

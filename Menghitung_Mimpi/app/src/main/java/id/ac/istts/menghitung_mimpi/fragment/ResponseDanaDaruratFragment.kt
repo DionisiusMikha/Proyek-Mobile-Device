@@ -8,7 +8,17 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import id.ac.istts.menghitung_mimpi.R
+import id.ac.istts.menghitung_mimpi.viewmodel.API.Factory.SavingFactory
+import id.ac.istts.menghitung_mimpi.viewmodel.API.Repository.SavingRepo
+import id.ac.istts.menghitung_mimpi.viewmodel.API.RetrofitInstance
+import id.ac.istts.menghitung_mimpi.viewmodel.SavingVM
+import id.ac.istts.menghitung_mimpi.viewmodel.Token
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.text.DecimalFormat
 
 class ResponseDanaDaruratFragment : Fragment() {
@@ -21,6 +31,11 @@ class ResponseDanaDaruratFragment : Fragment() {
     lateinit var tvHasilInvestasiResponseDanaDarurat: TextView
     lateinit var ivResponseEmoteDanaDarurat: ImageView
     lateinit var btnSimpanRespnseDanaDarurat: Button
+
+    private val vm: SavingVM by activityViewModels {
+        SavingFactory(SavingRepo(RetrofitInstance.apiSave))
+    }
+    private val coroutine = CoroutineScope(Dispatchers.IO)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,5 +80,26 @@ class ResponseDanaDaruratFragment : Fragment() {
         tvReturnInvestasiResponseDanaDarurat.text = "${presentase}% / tahun"
         tvLamaInvestasiResponseDanaDarurat.text = "$lama bulan"
         tvHasilInvestasiResponseDanaDarurat.text = "Rp${formatter.format(total)}"
+
+        btnSimpanRespnseDanaDarurat.setOnClickListener {
+            coroutine.launch {
+                vm.saveDanaDarurat(Token.getToken()!!, danaDarurat!!, danaSkrg!!, lama!!, invest!!, presentase!!, total!!, status, onSuccess = { message ->
+                    activity?.runOnUiThread{
+                        Toast.makeText(requireContext(), "Berhasil menyimpan!!", Toast.LENGTH_SHORT).show()
+                        popBackStackTwice()
+                    }
+                }, onError = { error ->
+                    activity?.runOnUiThread{
+                        Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
+                    }
+                })
+            }
+        }
+    }
+
+    private fun popBackStackTwice() {
+        val fragmentManager = requireActivity().supportFragmentManager
+        fragmentManager.popBackStackImmediate() // First pop
+        fragmentManager.popBackStackImmediate() // Second pop
     }
 }

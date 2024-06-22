@@ -93,7 +93,7 @@ class ResponseKalkulatorInvestasiFragment : Fragment() {
                 vm.saveInvest(Token.getToken()!!, target!!, waktu!!, uangSkrg!!, invest!!, presentase!!, final!!, type!!, res, onSuccess = { message ->
                     activity?.runOnUiThread{
                         Toast.makeText(requireContext(), "Berhasil menyimpan!!", Toast.LENGTH_SHORT).show()
-                        goToFragment(HomeFragment())
+                        popBackStackTwice()
                     }
                 }, onError = { error ->
                     activity?.runOnUiThread{
@@ -104,10 +104,9 @@ class ResponseKalkulatorInvestasiFragment : Fragment() {
         }
     }
 
-    private fun goToFragment(fragment: Fragment) {
-        val transaction = requireActivity().supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragmentContainer, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
+    private fun popBackStackTwice() {
+        val fragmentManager = requireActivity().supportFragmentManager
+        fragmentManager.popBackStackImmediate() // First pop
+        fragmentManager.popBackStackImmediate() // Second pop
     }
 }

@@ -21,6 +21,7 @@ class LoginActivity : AppCompatActivity() {
     lateinit var etEmailLoginPage: EditText
     lateinit var etPasswordLoginPage: EditText
     lateinit var tvToRegisterPage: TextView
+    lateinit var tvForgotPassword: TextView
     lateinit var btnLogIn: Button
 
     private val vm:LoginVM by viewModels {
@@ -35,9 +36,16 @@ class LoginActivity : AppCompatActivity() {
         etPasswordLoginPage = findViewById(R.id.etPasswordLoginPage)
         tvToRegisterPage = findViewById(R.id.tvToRegisterPage)
         btnLogIn = findViewById(R.id.btnLogin)
+        tvForgotPassword = findViewById(R.id.tvForgotPassword)
 
         tvToRegisterPage.setOnClickListener{
             val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        tvForgotPassword.setOnClickListener {
+            val intent = Intent(this, ForgotPasswordActivity::class.java)
             startActivity(intent)
             finish()
         }

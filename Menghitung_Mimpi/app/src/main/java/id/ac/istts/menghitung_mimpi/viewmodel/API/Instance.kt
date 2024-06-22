@@ -3,6 +3,7 @@ package id.ac.istts.menghitung_mimpi.viewmodel.API
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Interface.AuthService
+import id.ac.istts.menghitung_mimpi.viewmodel.API.Interface.ForgotPasswordService
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Interface.LoginService
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Interface.RegisterService
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Interface.SavingService
@@ -32,4 +33,5 @@ object RetrofitInstance {
     val apiRegister: RegisterService = retrofit.create(RegisterService::class.java)
     val apiAuth: AuthService = retrofit.create(AuthService::class.java)
     val apiSave: SavingService = retrofit.create(SavingService::class.java)
+    val apiPassword: ForgotPasswordService = retrofit.create(ForgotPasswordService::class.java)
 }
