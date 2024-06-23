@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import id.ac.istts.menghitung_mimpi.R
+import id.ac.istts.menghitung_mimpi.layout.ChatBot
 import id.ac.istts.menghitung_mimpi.layout.ChatBotActivity
 import id.ac.istts.menghitung_mimpi.layout.LoginActivity
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Factory.AuthFactory
@@ -100,7 +101,7 @@ class HomeFragment : Fragment() {
         }
 
         btn_TanyaPenggu.setOnClickListener {
-            val intent = Intent(requireActivity(), ChatBotActivity::class.java)
+            val intent = Intent(requireActivity(), ChatBot::class.java)
             startActivity(intent)
         }
     }

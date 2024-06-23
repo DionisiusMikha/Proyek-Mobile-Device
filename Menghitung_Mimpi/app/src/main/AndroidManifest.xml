@@ -16,49 +16,45 @@
         android:theme="@style/Theme.Menghitung_Mimpi"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+        <activity
+            android:name=".layout.ChatBot"
+            android:exported="false"
+            android:label="@string/title_activity_chat_bot"
+            android:theme="@style/Theme.Menghitung_Mimpi" />
         <activity
             android:name=".layout.ChatBotActivity"
-            android:windowSoftInputMode="adjustPan|adjustResize"
-            android:exported="false" />
-
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
             android:name=".layout.NewPasswordActivity"
             android:exported="false" />
-
         <activity
             android:name=".layout.SecurityPinActivity"
             android:exported="false" />
-
         <activity
             android:name=".layout.ForgotPasswordActivity"
             android:exported="false" />
-
         <activity
             android:name=".layout.LoginActivity"
             android:exported="false" />
-
         <activity
             android:name=".layout.RegisterActivity"
             android:exported="false" />
-
         <activity
             android:name=".layout.IntroSliderActivity"
             android:exported="false" />
-
         <activity
             android:name=".layout.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".layout.LoginRegisterActivity"
             android:exported="false" />
-
         <activity
             android:name=".layout.MainActivity"
             android:exported="false" />

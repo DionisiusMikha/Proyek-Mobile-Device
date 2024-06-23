@@ -5,4 +5,5 @@
     <string name="text2">¿Are you ready to take control of your finaces?</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_chat_bot">ChatBot</string>
 </resources>
