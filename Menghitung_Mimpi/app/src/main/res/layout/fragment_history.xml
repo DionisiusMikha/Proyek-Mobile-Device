@@ -19,8 +19,79 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.0">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvListHistory"
+            android:layout_width="345dp"
+            android:layout_height="400dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="36dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvFilterKategori"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="Kategori"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/rvListHistory"
+            app:layout_constraintStart_toStartOf="@+id/rvListHistory"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.756" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutPopUpFilter"
+            android:layout_width="105dp"
+            android:layout_height="144dp"
+            android:background="#DFF7E2"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="@+id/rvListHistory"
+            app:layout_constraintTop_toBottomOf="@+id/tvFilterKategori">
+
+            <Button
+                android:id="@+id/btnInvestFilter"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFFFFF"
+                android:text="Kalkulattor Investasi"
+                android:textColor="#000000"
+                android:textSize="8sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btnDanaDaruratFilter"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFFFFF"
+                android:text="Dana Darurat"
+                android:textColor="#000000"
+                android:textSize="8sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnInvestFilter" />
+
+            <Button
+                android:id="@+id/btnMenikahFilter"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFFFFF"
+                android:text="Menikah"
+                android:textColor="#000000"
+                android:textSize="8sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnDanaDaruratFilter" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
