@@ -81,7 +81,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView22">
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/btnTopup1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -91,54 +91,54 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/btnHistory1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:backgroundTint="#FFFFFF"
                 android:src="@drawable/history_icon"
-                app:layout_constraintStart_toEndOf="@+id/imageButton"
+                app:layout_constraintStart_toEndOf="@+id/btnTopup1"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/btnAddPocket1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:backgroundTint="#FFFFFF"
                 android:src="@drawable/add_pocket_icon"
-                app:layout_constraintStart_toEndOf="@+id/imageButton2"
+                app:layout_constraintStart_toEndOf="@+id/btnHistory1"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView96"
+                android:id="@+id/btnTopup2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Top Up"
                 android:textColor="#000000"
-                app:layout_constraintEnd_toEndOf="@+id/imageButton"
-                app:layout_constraintStart_toStartOf="@+id/imageButton"
-                app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+                app:layout_constraintEnd_toEndOf="@+id/btnTopup1"
+                app:layout_constraintStart_toStartOf="@+id/btnTopup1"
+                app:layout_constraintTop_toBottomOf="@+id/btnTopup1" />
 
             <TextView
-                android:id="@+id/textView100"
+                android:id="@+id/btnHistory2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="History"
                 android:textColor="#000000"
-                app:layout_constraintEnd_toEndOf="@+id/imageButton2"
-                app:layout_constraintStart_toStartOf="@+id/imageButton2"
-                app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+                app:layout_constraintEnd_toEndOf="@+id/btnHistory1"
+                app:layout_constraintStart_toStartOf="@+id/btnHistory1"
+                app:layout_constraintTop_toBottomOf="@+id/btnHistory1" />
 
             <TextView
-                android:id="@+id/textView104"
+                android:id="@+id/btnAddPocket2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add Pocket"
                 android:textColor="#000000"
-                app:layout_constraintEnd_toEndOf="@+id/imageButton3"
-                app:layout_constraintStart_toStartOf="@+id/imageButton3"
-                app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+                app:layout_constraintEnd_toEndOf="@+id/btnAddPocket1"
+                app:layout_constraintStart_toStartOf="@+id/btnAddPocket1"
+                app:layout_constraintTop_toBottomOf="@+id/btnAddPocket1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
