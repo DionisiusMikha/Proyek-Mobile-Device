@@ -5,5 +5,7 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class GetNameResponse<T>(
-    @Json(name = "name") val name: String
+    @Json(name = "name") val name: String,
+    @Json(name = "saldo") val saldo: Int,
+    @Json(name = "tabungan") val tabungan: Int
 )

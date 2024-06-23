@@ -1,4 +1,6 @@
+const { Op } = require("sequelize")
 const Users = require("../models/UserModel");
+const Topup = require("../models/Topup");
 const Invest = require("../models/Investasi");
 const DanaDarurat = require("../models/DanaDarurat");
 const PasswordKey = require("../models/PasswordKey");
@@ -145,7 +147,29 @@ const getName = async (req, res) => {
     return res.status(404).json({ message: "User is not registered" });
   }
 
-  return res.status(200).json({ name: user.full_name });
+  const bulan = new Date().getMonth() + 1
+  const tahun = new Date().getFullYear()
+
+  const tabungBulanan = await Topup.findAll({
+    where:{
+      id_user: user.id_user,
+      status_topup: 1,
+      waktu_topup: {
+        [Op.between]: [`${tahun}-${bulan}-01`, `${tahun}-${bulan}-31`]
+      }
+    }
+  })
+
+  let totaltabungan = 0
+  tabungBulanan.forEach(element => {
+    totaltabungan += element.jumlah_topup
+  });
+
+  return res.status(200).json({ 
+    name: user.full_name,
+    saldo: user.saldo,
+    tabungan: totaltabungan
+   });
 };
 
 const forgotPassword = async (req, res) => {
@@ -386,7 +410,8 @@ const getInvestasi = async (req, res) => {
   try {
     const investasi = await Invest.findAll({ 
       where: { id_user: user.id_user },
-      attributes: ["target", "waktu", "uang_sekarang", "invest", "presentase", "final", "type", "status", "createdAt"]
+      attributes: ["target", "waktu", "uang_sekarang", "invest", "presentase", "final", "type", "status", "createdAt"],
+      order: [["createdAt", "ASC"]]
     })
 
     return res.status(200).json(investasi)
@@ -409,7 +434,8 @@ const getDanaDarurat = async (req, res) => {
   try {
     const dana_darurat = await DanaDarurat.findAll({ 
       where: { id_user: user.id_user },
-      attributes: ["dana_darurat", "dana_sekarang", "lama", "invest", "presentase", "total", "status", "createdAt"]
+      attributes: ["dana_darurat", "dana_sekarang", "lama", "invest", "presentase", "total", "status", "createdAt"],
+      order: [["createdAt", "ASC"]]
     })
 
     return res.status(200).json({dana_darurat})
@@ -432,7 +458,8 @@ const getNikah = async (req, res) => {
   try {
     const nikah = await Nikah.findAll({ 
       where: { id_user: user.id_user },
-      attributes: ["biaya_final", "uang_sekarang", "invest", "presentase", "waktu", "total_final", "status", "createdAt"]
+      attributes: ["biaya_final", "uang_sekarang", "invest", "presentase", "waktu", "total_final", "status", "createdAt"],
+      order: [["createdAt", "ASC"]]
     })
     return res.status(200).json({nikah})
   } catch (error) {
