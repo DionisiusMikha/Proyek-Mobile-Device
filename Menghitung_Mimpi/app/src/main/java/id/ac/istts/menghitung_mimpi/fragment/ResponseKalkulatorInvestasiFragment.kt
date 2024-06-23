@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import id.ac.istts.menghitung_mimpi.R
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Factory.LoginFactory
@@ -71,6 +72,11 @@ class ResponseKalkulatorInvestasiFragment : Fragment() {
         val waktu = bundle?.getInt("waktu")
         val final = bundle?.getInt("final")
         val res: Boolean? = bundle?.getBoolean("res")
+        val simpan: Boolean? = bundle?.getBoolean("simpan")
+
+        if(simpan == true){
+            btnSimpanResponseKalkulatorInvestasi.isVisible = false
+        }
 
         val formatter = DecimalFormat("#,###")
         if(type == 1) textView82.text = "Jumlah investasi / bulan" else textView82.text = "Jumlah investasi / tahun"

@@ -64,3 +64,27 @@ data class Invest(
     @Json(name = "status") val status: Boolean,
     @Json(name = "createdAt") val createdAt: String
 )
+
+@JsonClass(generateAdapter = true)
+data class DanaDarurat(
+    @Json(name = "dana_darurat") val target: Int,
+    @Json(name = "dana_sekarang") val uangSekarang: Int,
+    @Json(name = "lama") val waktu: Int,
+    @Json(name = "invest") val invest: Int,
+    @Json(name = "presentase") val presentase: Int,
+    @Json(name = "total") val finalAmount: Int,
+    @Json(name = "status") val status: Boolean,
+    @Json(name = "createdAt") val createdAt: String
+)
+
+@JsonClass(generateAdapter = true)
+data class Nikah(
+    @Json(name = "biaya_final") val biayaFinal: Int,
+    @Json(name = "uang_sekarang") val uangSekarang: Int,
+    @Json(name = "invest") val invest: Int,
+    @Json(name = "presentase") val presentase: Int,
+    @Json(name = "waktu") val waktu: Int,
+    @Json(name = "total_final") val totalFinal: Int,
+    @Json(name = "status") val status: Boolean,
+    @Json(name = "createdAt") val createdAt: String
+)

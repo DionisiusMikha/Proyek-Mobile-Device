@@ -1,6 +1,8 @@
 package id.ac.istts.menghitung_mimpi.viewmodel.API.Interface
 
+import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.DanaDarurat
 import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.Invest
+import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.Nikah
 import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.SavingDanaDaruratRequest
 import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.SavingDanaDaruratResponse
 import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.SavingInvestRequest
@@ -35,4 +37,14 @@ interface SavingService {
     suspend fun getInvest(
         @Header("authorization") authorization: String?
     ): List<Invest>
+
+    @GET("users/get-dana-darurat")
+    suspend fun getDanaDarurat(
+        @Header("authorization") authorization: String?
+    ): List<DanaDarurat>
+
+    @GET("users/get-nikah")
+    suspend fun getNikah(
+        @Header("authorization") authorization: String?
+    ): List<Nikah>
 }

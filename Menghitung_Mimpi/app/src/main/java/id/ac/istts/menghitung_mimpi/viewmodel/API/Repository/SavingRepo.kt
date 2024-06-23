@@ -1,6 +1,8 @@
 package id.ac.istts.menghitung_mimpi.viewmodel.API.Repository
 
+import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.DanaDarurat
 import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.Invest
+import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.Nikah
 import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.SavingDanaDaruratRequest
 import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.SavingDanaDaruratResponse
 import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.SavingInvestRequest
@@ -46,6 +48,28 @@ class SavingRepo  (private val savingService: SavingService) {
     suspend fun getInvest(token: String): Result<List<Invest>> {
         return try {
             val response = savingService.getInvest("Bearer ${token}")
+            Result.success(response)
+        } catch (e: ApiException) {
+            Result.failure(e)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun getDanaDarurat(token: String): Result<List<DanaDarurat>> {
+        return try {
+            val response = savingService.getDanaDarurat("Bearer ${token}")
+            Result.success(response)
+        } catch (e: ApiException) {
+            Result.failure(e)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun getNikah(token: String): Result<List<Nikah>> {
+        return try {
+            val response = savingService.getNikah("Bearer ${token}")
             Result.success(response)
         } catch (e: ApiException) {
             Result.failure(e)

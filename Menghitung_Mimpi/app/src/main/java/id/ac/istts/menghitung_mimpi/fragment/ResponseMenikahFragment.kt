@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import id.ac.istts.menghitung_mimpi.R
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Factory.SavingFactory
@@ -67,6 +68,11 @@ class ResponseMenikahFragment : Fragment() {
         val waktu = bundle?.getInt("waktu")
         val totalFinal = bundle?.getInt("totalFinal")
         val status: Boolean? = bundle?.getBoolean("status")
+        val simpan: Boolean? = bundle?.getBoolean("simpan")
+
+        if(simpan == true){
+            btnSimpanResponseMenikah.isVisible = false
+        }
 
         val formatter = DecimalFormat("#,###")
         if(status!!){
