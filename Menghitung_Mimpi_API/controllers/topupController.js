@@ -56,4 +56,36 @@ const topup = async (req, res) => {
   }
 };
 
-module.exports = { topup };
+const changeStatusTopup = async (req, res) => {
+  const { id_topup } = req.body;
+
+  try {
+    const schema = Joi.object({
+      id_topup: Joi.string().required(),
+    });
+
+    const { error } = schema.validate(req.body);
+    if (error) {
+      return res.status(400).json({ message: error.details[0].message });
+    }
+
+    const topup = await Topup.findOne({ where: { id_topup } });
+    if (!topup) {
+      return res.status(404).json({ message: "Topup not found" });
+    }
+
+    await Topup.update(
+      { status_topup: 1 },
+      {
+        where: { id_topup },
+      }
+    );
+
+    res.status(200).json({ message: "Topup status updated" });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+module.exports = { topup, changeStatusTopup };

@@ -18,9 +18,7 @@ object RetrofitInstance {
     val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
 
     private val okHttpClient =
-            OkHttpClient.Builder()
-                .addInterceptor(ErrorHandlingInterceptor(moshi))
-                .build()
+            OkHttpClient.Builder().addInterceptor(ErrorHandlingInterceptor(moshi)).build()
 
     private val retrofit =
             Retrofit.Builder()
@@ -35,4 +33,3 @@ object RetrofitInstance {
     val apiSave: SavingService = retrofit.create(SavingService::class.java)
     val apiPassword: ForgotPasswordService = retrofit.create(ForgotPasswordService::class.java)
 }
-

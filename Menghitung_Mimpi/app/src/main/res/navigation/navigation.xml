@@ -84,5 +84,10 @@
     <action android:id="@+id/action_global_kalkulatorInvestasiFragment" app:destination="@id/kalkulatorInvestasiFragment" />
     <action android:id="@+id/action_global_danaDaruratFragment" app:destination="@id/danaDaruratFragment" />
     <action android:id="@+id/action_global_pernikahanFragment" app:destination="@id/pernikahanFragment" />
+    <activity
+        android:id="@+id/topupActivity"
+        android:name="id.ac.istts.menghitung_mimpi.layout.TopupActivity"
+        android:label="activity_topup"
+        tools:layout="@layout/activity_topup" />
 
 </navigation>
