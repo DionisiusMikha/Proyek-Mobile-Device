@@ -61,8 +61,7 @@ data class Invest(
     @Json(name = "presentase") val presentase: Int,
     @Json(name = "final") val finalAmount: Int,
     @Json(name = "type") val type: Int,
-    @Json(name = "status") val status: Boolean,
-    @Json(name = "createdAt") val createdAt: String
+    @Json(name = "status") val status: Boolean
 )
 
 @JsonClass(generateAdapter = true)
@@ -73,8 +72,7 @@ data class DanaDarurat(
     @Json(name = "invest") val invest: Int,
     @Json(name = "presentase") val presentase: Int,
     @Json(name = "total") val finalAmount: Int,
-    @Json(name = "status") val status: Boolean,
-    @Json(name = "createdAt") val createdAt: String
+    @Json(name = "status") val status: Boolean
 )
 
 @JsonClass(generateAdapter = true)
@@ -85,6 +83,5 @@ data class Nikah(
     @Json(name = "presentase") val presentase: Int,
     @Json(name = "waktu") val waktu: Int,
     @Json(name = "total_final") val totalFinal: Int,
-    @Json(name = "status") val status: Boolean,
-    @Json(name = "createdAt") val createdAt: String
+    @Json(name = "status") val status: Boolean
 )

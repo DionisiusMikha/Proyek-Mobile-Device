@@ -321,43 +321,17 @@
         app:layout_constraintVertical_bias="0.112">
 
         <TextView
-            android:id="@+id/textView28"
+            android:id="@+id/tvTotalTopup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Total Tabungan"
+            android:text="Kamu sudah menabung Sebanyak Rp0 bulan ini"
             android:textColor="#093030"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.14"
+            app:layout_constraintHorizontal_bias="0.336"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.092" />
-
-        <TextView
-            android:id="@+id/textView107"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="128dp"
-            android:text="Target Tabungan"
-            android:textColor="#093030"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.083"
-            app:layout_constraintStart_toEndOf="@+id/textView28"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.092" />
-
-        <ImageView
-            android:id="@+id/imageView31"
-            android:layout_width="18dp"
-            android:layout_height="19dp"
-            android:src="@drawable/down"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView107"
-            app:layout_constraintHorizontal_bias="0.98"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.092" />
+            app:layout_constraintVertical_bias="0.737" />
 
         <ImageView
             android:id="@+id/imageView30"
@@ -366,13 +340,13 @@
             android:src="@drawable/income"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/textView28"
-            app:layout_constraintHorizontal_bias="0.73"
+            app:layout_constraintHorizontal_bias="0.8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.092" />
+            app:layout_constraintVertical_bias="0.221" />
 
         <TextView
-            android:id="@+id/textView108"
+            android:id="@+id/tvSaldo"
             android:layout_width="181dp"
             android:layout_height="31dp"
             android:fontFamily="@font/poppins_semibold"
@@ -382,26 +356,24 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.082"
+            app:layout_constraintHorizontal_bias="0.162"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.293" />
+            app:layout_constraintVertical_bias="0.481" />
 
         <TextView
-            android:id="@+id/textView109"
-            android:layout_width="162dp"
-            android:layout_height="33dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="- Rp. 300.000"
-            android:textAlignment="textStart"
-            android:textColor="#0068FF"
-            android:textSize="20sp"
+            android:id="@+id/textView28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Tabungan"
+            android:textColor="#093030"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.205"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.284" />
+            app:layout_constraintVertical_bias="0.221" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

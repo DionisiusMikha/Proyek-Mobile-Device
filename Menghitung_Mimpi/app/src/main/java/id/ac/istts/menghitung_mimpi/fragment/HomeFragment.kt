@@ -28,11 +28,14 @@ import id.ac.istts.menghitung_mimpi.viewmodel.Token
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.text.DecimalFormat
 import java.util.Calendar
 
 class HomeFragment : Fragment() {
 
     lateinit var tvUser: TextView
+    lateinit var tvSaldo: TextView
+    lateinit var tvTotalTopup: TextView
     lateinit var btn_calcInves: CardView
     lateinit var btn_SpendAnalysis: CardView
     lateinit var btn_DanaDarurat: CardView
@@ -56,16 +59,21 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         tvUser = view.findViewById(R.id.tvUser)
+        tvSaldo = view.findViewById(R.id.tvSaldo)
+        tvTotalTopup = view.findViewById(R.id.tvTotalTopup)
         btn_DanaDarurat = view.findViewById(R.id.btn_DanaDarurat)
         btn_TanyaPenggu = view.findViewById(R.id.btn_TanyaPenggu)
         btn_Menikah = view.findViewById(R.id.btn_Menikah)
         btn_SpendAnalysis = view.findViewById(R.id.btn_SpendAnalysis)
         btn_calcInves = view.findViewById(R.id.btn_calcInvest)
 
+        val formatter = DecimalFormat("#,###")
         coroutine.launch {
             vm.getName(Token.getToken()!!, onSuccess = { name, saldo, tabungan ->
                 activity?.runOnUiThread {
                     tvUser.text = name
+                    tvSaldo.text = "Rp. ${formatter.format(saldo)}"
+                    tvTotalTopup.text = "Kamu sudah menabung Sebanyak Rp. ${formatter.format(tabungan)} bulan ini"
                 }
             }, onError = { error ->
                 activity?.runOnUiThread {

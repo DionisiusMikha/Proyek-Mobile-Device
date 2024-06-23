@@ -410,7 +410,7 @@ const getInvestasi = async (req, res) => {
   try {
     const investasi = await Invest.findAll({ 
       where: { id_user: user.id_user },
-      attributes: ["target", "waktu", "uang_sekarang", "invest", "presentase", "final", "type", "status", "createdAt"],
+      attributes: ["target", "waktu", "uang_sekarang", "invest", "presentase", "final", "type", "status"],
       order: [["createdAt", "ASC"]]
     })
 
@@ -434,11 +434,11 @@ const getDanaDarurat = async (req, res) => {
   try {
     const dana_darurat = await DanaDarurat.findAll({ 
       where: { id_user: user.id_user },
-      attributes: ["dana_darurat", "dana_sekarang", "lama", "invest", "presentase", "total", "status", "createdAt"],
+      attributes: ["dana_darurat", "dana_sekarang", "lama", "invest", "presentase", "total", "status"],
       order: [["createdAt", "ASC"]]
     })
 
-    return res.status(200).json({dana_darurat})
+    return res.status(200).json(dana_darurat)
   } catch (error) {
     return res.status(500).json({message: error.message})
   }
@@ -458,10 +458,10 @@ const getNikah = async (req, res) => {
   try {
     const nikah = await Nikah.findAll({ 
       where: { id_user: user.id_user },
-      attributes: ["biaya_final", "uang_sekarang", "invest", "presentase", "waktu", "total_final", "status", "createdAt"],
+      attributes: ["biaya_final", "uang_sekarang", "invest", "presentase", "waktu", "total_final", "status"],
       order: [["createdAt", "ASC"]]
     })
-    return res.status(200).json({nikah})
+    return res.status(200).json(nikah)
   } catch (error) {
     return res.status(500).json({message: error.message})
   }
