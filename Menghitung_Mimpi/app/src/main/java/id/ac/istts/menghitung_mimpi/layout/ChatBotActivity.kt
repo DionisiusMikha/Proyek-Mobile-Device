@@ -42,7 +42,7 @@ class ChatBotActivity : AppCompatActivity() {
             modelCall(prompt)
             fieldPesan.setText("")
         }
-        modelCall("Halo")
+        modelCall("Halo Pengu!")
 
     }
 
