@@ -54,12 +54,6 @@
         tools:layout="@layout/fragment_spend_analysis" />
 
     <fragment
-        android:id="@+id/chatBotFragment"
-        android:name="id.ac.istts.menghitung_mimpi.fragment.ChatBotFragment"
-        android:label="fragment_chat_bot"
-        tools:layout="@layout/fragment_chat_bot" />
-
-    <fragment
         android:id="@+id/responseDanaDaruratFragment"
         android:name="id.ac.istts.menghitung_mimpi.fragment.ResponseDanaDaruratFragment"
         android:label="fragment_response_dana_darurat"
@@ -87,7 +81,6 @@
     <action android:id="@+id/action_global_cardOnTapFragment" app:destination="@id/cardOnTapFragment" />
     <action android:id="@+id/action_global_cardFragment" app:destination="@id/cardFragment2" />
     <action android:id="@+id/action_global_spendAnalysisFragment" app:destination="@id/spendAnalysisFragment" />
-    <action android:id="@+id/action_global_chatBotFragment" app:destination="@id/chatBotFragment" />
     <action android:id="@+id/action_global_kalkulatorInvestasiFragment" app:destination="@id/kalkulatorInvestasiFragment" />
     <action android:id="@+id/action_global_danaDaruratFragment" app:destination="@id/danaDaruratFragment" />
     <action android:id="@+id/action_global_pernikahanFragment" app:destination="@id/pernikahanFragment" />

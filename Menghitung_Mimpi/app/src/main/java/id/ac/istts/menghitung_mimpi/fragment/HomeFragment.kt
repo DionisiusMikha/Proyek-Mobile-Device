@@ -1,5 +1,6 @@
 package id.ac.istts.menghitung_mimpi.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import id.ac.istts.menghitung_mimpi.R
+import id.ac.istts.menghitung_mimpi.layout.ChatBotActivity
+import id.ac.istts.menghitung_mimpi.layout.LoginActivity
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Factory.AuthFactory
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Factory.LoginFactory
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Repository.AuthRepo
@@ -97,7 +100,8 @@ class HomeFragment : Fragment() {
         }
 
         btn_TanyaPenggu.setOnClickListener {
-            findNavController().navigate(R.id.action_global_chatBotFragment)
+            val intent = Intent(requireActivity(), ChatBotActivity::class.java)
+            startActivity(intent)
         }
     }
 }

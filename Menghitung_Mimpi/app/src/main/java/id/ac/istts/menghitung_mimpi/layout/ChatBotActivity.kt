@@ -1,12 +1,13 @@
-package id.ac.istts.menghitung_mimpi.fragment
+package id.ac.istts.menghitung_mimpi.layout
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
-import androidx.fragment.app.Fragment
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.google.ai.client.generativeai.GenerativeModel
 import com.google.ai.client.generativeai.type.asTextOrNull
 import com.google.ai.client.generativeai.type.content
@@ -17,26 +18,32 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ChatBotFragment : Fragment() {
+class ChatBotActivity : AppCompatActivity() {
 
-    private lateinit var tvChatBot: TextView
+    lateinit var tvChatBot : TextView
+    private lateinit var fieldPesan : EditText
+    private lateinit var kirimPesan : TextView
     private val TAG = "ChatBotFragment"
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_chat_bot, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        tvChatBot = view.findViewById(R.id.tvChat) ?: run {
-            Log.e(TAG, "TextView initialization failed")
-            return
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_chat_bot)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+        tvChatBot = findViewById(R.id.tvChat)
+        fieldPesan = findViewById(R.id.fieldPesan)
+        kirimPesan = findViewById(R.id.kirimPesan)
+        kirimPesan.setOnClickListener {
+            val prompt = fieldPesan.text.toString()
+            modelCall(prompt)
+            fieldPesan.setText("")
         }
         modelCall("Halo")
+
     }
 
     private fun modelCall(prompt: String) {
