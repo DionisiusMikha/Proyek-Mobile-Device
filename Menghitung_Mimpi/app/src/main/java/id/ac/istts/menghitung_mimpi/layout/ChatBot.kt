@@ -5,7 +5,6 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
@@ -37,6 +36,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -44,8 +44,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.drawable.toBitmap
@@ -57,12 +62,20 @@ import coil.size.Size
 import id.ac.istts.menghitung_mimpi.R
 import id.ac.istts.menghitung_mimpi.layout.ui.theme.Green
 import id.ac.istts.menghitung_mimpi.layout.ui.theme.Menghitung_MimpiTheme
+import id.ac.istts.menghitung_mimpi.viewmodel.ChatViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
 class ChatBot : ComponentActivity() {
 
     private val uriState = MutableStateFlow("")
+
+    private val imagePicker =
+        registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri: Uri? ->
+            uri?.let {
+                uriState.update { uri.toString() }
+            }
+        }
 
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,7 +86,6 @@ class ChatBot : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
                     Scaffold(
                         topBar = {
                             Box(
@@ -84,9 +96,8 @@ class ChatBot : ComponentActivity() {
                                     .padding(horizontal = 16.dp)
                             ) {
                                 Text(
-                                    modifier = Modifier
-                                        .align(Alignment.TopStart),
-                                    text = stringResource(id = R.string.app_name),
+                                    modifier = Modifier.align(Alignment.TopStart),
+                                    text = "Tanya Penggu",
                                     fontSize = 19.sp,
                                     color = MaterialTheme.colorScheme.onPrimary
                                 )
@@ -95,7 +106,6 @@ class ChatBot : ComponentActivity() {
                     ) {
                         ChatScreen(paddingValues = it)
                     }
-
                 }
             }
         }
@@ -108,6 +118,10 @@ class ChatBot : ComponentActivity() {
         val chatState = chaViewModel.chatState.collectAsState().value
 
         val bitmap = getBitmap()
+
+        LaunchedEffect(Unit) {
+            chaViewModel.onEvent(ChatUiEvent.SendPrompt("halo pengu, aku mau nanya nih!", bitmap))
+        }
 
         Column(
             modifier = Modifier
@@ -122,7 +136,7 @@ class ChatBot : ComponentActivity() {
                     .padding(horizontal = 8.dp),
                 reverseLayout = true
             ) {
-                itemsIndexed(chatState.chatList) { index, chat ->
+                itemsIndexed(chatState.chatList) { _, chat ->
                     if (chat.isFromUser) {
                         UserChatItem(
                             prompt = chat.prompt, bitmap = chat.bitmap
@@ -139,7 +153,6 @@ class ChatBot : ComponentActivity() {
                     .padding(bottom = 16.dp, start = 4.dp, end = 4.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-
                 Column {
                     bitmap?.let {
                         Image(
@@ -164,11 +177,26 @@ class ChatBot : ComponentActivity() {
                         chaViewModel.onEvent(ChatUiEvent.UpdatePrompt(it))
                     },
                     placeholder = {
-                        Text(text = "Type a prompt")
+                        Text(text = "Mau tanya apa?")
                     }
                 )
 
                 Spacer(modifier = Modifier.width(8.dp))
+
+                Icon(
+                    modifier = Modifier
+                        .size(40.dp)
+                        .clickable {
+                            imagePicker.launch(
+                                PickVisualMediaRequest.Builder()
+                                    .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly)
+                                    .build()
+                            )
+                        },
+                    imageVector = Icons.Rounded.AddPhotoAlternate,
+                    contentDescription = "Add Photo",
+                    tint = MaterialTheme.colorScheme.primary
+                )
 
                 Icon(
                     modifier = Modifier
@@ -223,6 +251,19 @@ class ChatBot : ComponentActivity() {
 
     @Composable
     fun ModelChatItem(response: String) {
+        val annotatedString = buildAnnotatedString {
+            val splitResponse = response.split("**")
+            splitResponse.forEachIndexed { index, part ->
+                if (index % 2 == 1) {
+                    withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                        append(part)
+                    }
+                } else {
+                    append(part)
+                }
+            }
+        }
+
         Column(
             modifier = Modifier.padding(end = 100.dp, bottom = 16.dp)
         ) {
@@ -232,13 +273,13 @@ class ChatBot : ComponentActivity() {
                     .clip(RoundedCornerShape(12.dp))
                     .background(Green)
                     .padding(16.dp),
-                text = response,
+                text = annotatedString,
                 fontSize = 17.sp,
                 color = MaterialTheme.colorScheme.onPrimary
             )
-
         }
     }
+
 
     @Composable
     private fun getBitmap(): Bitmap? {

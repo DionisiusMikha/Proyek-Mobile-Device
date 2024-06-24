@@ -15,15 +15,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import id.ac.istts.menghitung_mimpi.R
 import id.ac.istts.menghitung_mimpi.layout.ChatBot
-import id.ac.istts.menghitung_mimpi.layout.ChatBotActivity
-import id.ac.istts.menghitung_mimpi.layout.LoginActivity
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Factory.AuthFactory
-import id.ac.istts.menghitung_mimpi.viewmodel.API.Factory.LoginFactory
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Repository.AuthRepo
-import id.ac.istts.menghitung_mimpi.viewmodel.API.Repository.LoginRepo
 import id.ac.istts.menghitung_mimpi.viewmodel.API.RetrofitInstance
 import id.ac.istts.menghitung_mimpi.viewmodel.AuthVM
-import id.ac.istts.menghitung_mimpi.viewmodel.LoginVM
 import id.ac.istts.menghitung_mimpi.viewmodel.Token
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
