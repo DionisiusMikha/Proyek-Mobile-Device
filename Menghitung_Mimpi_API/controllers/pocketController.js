@@ -1,4 +1,5 @@
 const Pockets = require("../models/PocketModel");
+const TopupPocketHistory = require("../models/historytopuppocket");
 const Users = require("../models/UserModel");
 const Joi = require("joi").extend(require("@joi/date"));
 const jwt = require("jsonwebtoken");
@@ -174,9 +175,23 @@ const updatePocket = async (req, res) => {
     }
 
     pocket.nama_pocket = nama_pocket;
-    pocket.saldo_pocket += saldo_pocket;
+    pocket.saldo_pocket = parseInt(saldo_pocket);
 
     await pocket.save();
+
+    // await TopupPocketHistory.create({
+    //   id_user: user.id_user,
+    //   id_pocket: pocket.id_pocket,
+    //   jumlah_topup: parseInt(saldo_pocket),
+    // }); Field 'deletedAt' doesn't have a default value
+
+    const newHistory = await TopupPocketHistory.create({
+      id_user: user.id_user,
+      id_pocket: pocket.id_pocket,
+      jumlah_topup: parseInt(saldo_pocket),
+      createdAt: new Date(),
+      deletedAt: null,
+    });
 
     res.status(200).json({
       message: "Pocket updated",
@@ -187,7 +202,7 @@ const updatePocket = async (req, res) => {
       },
     });
   } catch (err) {
-    console.error(err.message);
+    console.error(err);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
