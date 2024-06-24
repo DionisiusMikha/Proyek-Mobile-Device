@@ -44,7 +44,8 @@ class AddPocket : AppCompatActivity() {
     private fun getUsersData(token: String) {
         val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:3000/api/")
+            // .baseUrl("http://10.0.2.2:3000/api/")
+            .baseUrl("https://mdp.jensgelato.com/api/")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
 

@@ -53,7 +53,7 @@ class TopupActivity : AppCompatActivity() {
         val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
         val retrofit =
             Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3000/api/pocket/")
+                .baseUrl("https://mdp.jensgelato.com/api/pocket/")
                 .addConverterFactory(MoshiConverterFactory.create(moshi))
                 .build()
 
