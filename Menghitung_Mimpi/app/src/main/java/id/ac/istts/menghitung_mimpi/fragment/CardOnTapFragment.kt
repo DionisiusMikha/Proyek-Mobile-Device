@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import id.ac.istts.menghitung_mimpi.R
+import id.ac.istts.menghitung_mimpi.layout.AddPocket
 import id.ac.istts.menghitung_mimpi.layout.TopupActivity
 import id.ac.istts.menghitung_mimpi.viewmodel.API.DataClass.UsersDataclass
 import id.ac.istts.menghitung_mimpi.viewmodel.API.Interface.UsersDataService
@@ -69,6 +70,15 @@ class CardOnTapFragment : Fragment() {
         }
 
         getUsersData(token)
+
+        btnAddPocket1.setOnClickListener {
+            val intent = Intent(activity, AddPocket::class.java)
+            startActivity(intent)
+        }
+        btnAddPocket2.setOnClickListener {
+            val intent = Intent(activity, AddPocket::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun formatRupiah(amount: Int): String {

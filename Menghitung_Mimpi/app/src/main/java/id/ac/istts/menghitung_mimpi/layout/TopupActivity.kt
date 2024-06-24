@@ -59,7 +59,6 @@ class TopupActivity : AppCompatActivity() {
 
         val topupService = retrofit.create(TopupService::class.java)
 
-        // Fetch pocket items from API
         fetchTopupItems(topupService, token)
 
         val metodeAdapter = ArrayAdapter(
@@ -206,9 +205,7 @@ class TopupActivity : AppCompatActivity() {
     }
 
     private fun getPocketIdByName(name: String): String? {
-        // Search for the pocket with the given name in the list of pocket items
         val pocketItem = pocketItems.find { it.nama_pocket == name }
-        // Return the ID of the found pocket item, or null if not found
         return pocketItem?.id_pocket
     }
 
