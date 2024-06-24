@@ -1,4 +1,4 @@
-const { Op } = require("sequelize")
+const { Op } = require("sequelize");
 const Users = require("../models/UserModel");
 const Topup = require("../models/Topup");
 const Invest = require("../models/Investasi");
@@ -147,29 +147,29 @@ const getName = async (req, res) => {
     return res.status(404).json({ message: "User is not registered" });
   }
 
-  const bulan = new Date().getMonth() + 1
-  const tahun = new Date().getFullYear()
+  const bulan = new Date().getMonth() + 1;
+  const tahun = new Date().getFullYear();
 
   const tabungBulanan = await Topup.findAll({
-    where:{
+    where: {
       id_user: user.id_user,
       status_topup: 1,
       waktu_topup: {
-        [Op.between]: [`${tahun}-${bulan}-01`, `${tahun}-${bulan}-31`]
-      }
-    }
-  })
-
-  let totaltabungan = 0
-  tabungBulanan.forEach(element => {
-    totaltabungan += element.jumlah_topup
+        [Op.between]: [`${tahun}-${bulan}-01`, `${tahun}-${bulan}-31`],
+      },
+    },
   });
 
-  return res.status(200).json({ 
+  let totaltabungan = 0;
+  tabungBulanan.forEach((element) => {
+    totaltabungan += element.jumlah_topup;
+  });
+
+  return res.status(200).json({
     name: user.full_name,
     saldo: user.saldo,
-    tabungan: totaltabungan
-   });
+    tabungan: totaltabungan,
+  });
 };
 
 const forgotPassword = async (req, res) => {
@@ -408,17 +408,26 @@ const getInvestasi = async (req, res) => {
   }
 
   try {
-    const investasi = await Invest.findAll({ 
+    const investasi = await Invest.findAll({
       where: { id_user: user.id_user },
-      attributes: ["target", "waktu", "uang_sekarang", "invest", "presentase", "final", "type", "status"],
-      order: [["createdAt", "ASC"]]
-    })
+      attributes: [
+        "target",
+        "waktu",
+        "uang_sekarang",
+        "invest",
+        "presentase",
+        "final",
+        "type",
+        "status",
+      ],
+      order: [["createdAt", "ASC"]],
+    });
 
-    return res.status(200).json(investasi)
+    return res.status(200).json(investasi);
   } catch (error) {
-    return res.status(500).json({message: error.message})
+    return res.status(500).json({ message: error.message });
   }
-}
+};
 
 const getDanaDarurat = async (req, res) => {
   const token = req.headers.authorization.split(" ")[1];
@@ -432,17 +441,25 @@ const getDanaDarurat = async (req, res) => {
   }
 
   try {
-    const dana_darurat = await DanaDarurat.findAll({ 
+    const dana_darurat = await DanaDarurat.findAll({
       where: { id_user: user.id_user },
-      attributes: ["dana_darurat", "dana_sekarang", "lama", "invest", "presentase", "total", "status"],
-      order: [["createdAt", "ASC"]]
-    })
+      attributes: [
+        "dana_darurat",
+        "dana_sekarang",
+        "lama",
+        "invest",
+        "presentase",
+        "total",
+        "status",
+      ],
+      order: [["createdAt", "ASC"]],
+    });
 
-    return res.status(200).json(dana_darurat)
+    return res.status(200).json(dana_darurat);
   } catch (error) {
-    return res.status(500).json({message: error.message})
+    return res.status(500).json({ message: error.message });
   }
-}
+};
 
 const getNikah = async (req, res) => {
   const token = req.headers.authorization.split(" ")[1];
@@ -456,16 +473,38 @@ const getNikah = async (req, res) => {
   }
 
   try {
-    const nikah = await Nikah.findAll({ 
+    const nikah = await Nikah.findAll({
       where: { id_user: user.id_user },
-      attributes: ["biaya_final", "uang_sekarang", "invest", "presentase", "waktu", "total_final", "status"],
-      order: [["createdAt", "ASC"]]
-    })
-    return res.status(200).json(nikah)
+      attributes: [
+        "biaya_final",
+        "uang_sekarang",
+        "invest",
+        "presentase",
+        "waktu",
+        "total_final",
+        "status",
+      ],
+      order: [["createdAt", "ASC"]],
+    });
+    return res.status(200).json(nikah);
   } catch (error) {
-    return res.status(500).json({message: error.message})
+    return res.status(500).json({ message: error.message });
   }
-}
+};
+
+const getUserData = async (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+  const email = decoded.email;
+
+  const user = await Users.findOne({ where: { email } });
+  if (!user) {
+    return res.status(404).json({ message: "User is not registered" });
+  }
+
+  return res.status(200).json(user);
+};
 
 const authentication = async (req, res, next) => {
   // bearer token
@@ -502,4 +541,5 @@ module.exports = {
   forgotPassword,
   cekOtp,
   resetPassword,
+  getUserData,
 };

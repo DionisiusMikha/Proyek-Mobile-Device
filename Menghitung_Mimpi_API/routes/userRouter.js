@@ -14,10 +14,10 @@ const {
   getInvestasi,
   getDanaDarurat,
   getNikah,
-  getProfile,
   forgotPassword,
   cekOtp,
   resetPassword,
+  getUserData,
 } = require("../controllers/userController");
 
 const limiter = rateLimit({
@@ -40,5 +40,6 @@ router.post("/save-darurat", authentication, saveDarurat);
 router.post("/save-nikah", authentication, saveNikah);
 router.post("/cek-otp", cekOtp);
 router.post("/reset-password", resetPassword);
+router.get("/get-user-data", authentication, getUserData);
 
 module.exports = router;

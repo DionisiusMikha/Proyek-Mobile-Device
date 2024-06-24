@@ -1,6 +1,8 @@
 package id.ac.istts.menghitung_mimpi.layout
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -19,6 +21,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.text.NumberFormat
+import java.util.Locale
 
 class TopupActivity : AppCompatActivity() {
 
@@ -76,6 +80,34 @@ class TopupActivity : AppCompatActivity() {
                 Toast.makeText(this, "Topup Berhasil", Toast.LENGTH_SHORT).show()
             }
         }
+
+        etAmount.addTextChangedListener(object : TextWatcher {
+            private var current = ""
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s.toString() != current) {
+                    etAmount.removeTextChangedListener(this)
+
+                    val cleanString = s.toString().replace("[,.]".toRegex(), "")
+                    val parsed = cleanString.toDoubleOrNull()
+                    val formatted = if (parsed != null) {
+                        NumberFormat.getNumberInstance(Locale.US).format(parsed)
+                    } else {
+                        ""
+                    }
+
+                    current = formatted
+                    etAmount.setText(formatted)
+                    etAmount.setSelection(formatted.length)
+
+                    etAmount.addTextChangedListener(this)
+                }
+            }
+        })
+
     }
 
     private fun fetchTopupItems(service: TopupService, token: String) {
@@ -122,4 +154,5 @@ class TopupActivity : AppCompatActivity() {
                         }
                 )
     }
+
 }

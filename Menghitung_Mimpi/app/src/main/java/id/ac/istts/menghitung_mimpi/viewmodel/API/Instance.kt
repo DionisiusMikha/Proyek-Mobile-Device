@@ -13,23 +13,26 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 object RetrofitInstance {
-    private const val BASE_URL = "https://mdp.jensgelato.com/api/"
+        // private const val BASE_URL = "https://mdp.jensgelato.com/api/"
+        private const val BASE_URL = "http://10.0.2.2:3000/api/"
 
-    val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
+        val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
 
-    private val okHttpClient =
-            OkHttpClient.Builder().addInterceptor(ErrorHandlingInterceptor(moshi)).build()
+        private val okHttpClient =
+                        OkHttpClient.Builder()
+                                        .addInterceptor(ErrorHandlingInterceptor(moshi))
+                                        .build()
 
-    private val retrofit =
-            Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .client(okHttpClient)
-                    .addConverterFactory(MoshiConverterFactory.create(moshi))
-                    .build()
+        private val retrofit =
+                        Retrofit.Builder()
+                                        .baseUrl(BASE_URL)
+                                        .client(okHttpClient)
+                                        .addConverterFactory(MoshiConverterFactory.create(moshi))
+                                        .build()
 
-    val apiLogin: LoginService = retrofit.create(LoginService::class.java)
-    val apiRegister: RegisterService = retrofit.create(RegisterService::class.java)
-    val apiAuth: AuthService = retrofit.create(AuthService::class.java)
-    val apiSave: SavingService = retrofit.create(SavingService::class.java)
-    val apiPassword: ForgotPasswordService = retrofit.create(ForgotPasswordService::class.java)
+        val apiLogin: LoginService = retrofit.create(LoginService::class.java)
+        val apiRegister: RegisterService = retrofit.create(RegisterService::class.java)
+        val apiAuth: AuthService = retrofit.create(AuthService::class.java)
+        val apiSave: SavingService = retrofit.create(SavingService::class.java)
+        val apiPassword: ForgotPasswordService = retrofit.create(ForgotPasswordService::class.java)
 }
