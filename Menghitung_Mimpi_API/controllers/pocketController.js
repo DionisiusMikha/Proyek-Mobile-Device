@@ -96,10 +96,7 @@ const getAllPockets = async (req, res) => {
       };
     });
 
-    res.status(200).json({
-      message: "Success",
-      data: pockets,
-    });
+    res.status(200).send(pockets);
   } catch (err) {
     console.error(err.message);
     return res.status(500).json({ message: "Internal server error" });

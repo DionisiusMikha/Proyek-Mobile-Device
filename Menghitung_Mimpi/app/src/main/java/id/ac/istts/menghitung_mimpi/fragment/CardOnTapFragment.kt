@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import id.ac.istts.menghitung_mimpi.R
 import id.ac.istts.menghitung_mimpi.layout.TopupActivity
+import id.ac.istts.menghitung_mimpi.viewmodel.Token
 
 class CardOnTapFragment : Fragment() {
 
@@ -19,6 +20,7 @@ class CardOnTapFragment : Fragment() {
     lateinit var btnHistory2: TextView
     lateinit var btnAddPocket1: ImageButton
     lateinit var btnAddPocket2: TextView
+    lateinit var tvMainPocket: TextView
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -38,6 +40,10 @@ class CardOnTapFragment : Fragment() {
         btnAddPocket1 = view.findViewById(R.id.btnAddPocket1)
         btnAddPocket2 = view.findViewById(R.id.btnAddPocket2)
 
+        tvMainPocket = view.findViewById(R.id.tvMainPocket)
+
+        val token = Token.getToken()
+        tvMainPocket.text = "Rp. 100.000"
         btnTopUp1.setOnClickListener {
             val intent = Intent(activity, TopupActivity::class.java)
             startActivity(intent)
