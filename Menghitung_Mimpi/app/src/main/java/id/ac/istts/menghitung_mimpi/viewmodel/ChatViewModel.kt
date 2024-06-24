@@ -1,10 +1,12 @@
-package id.ac.istts.menghitung_mimpi.layout
+package id.ac.istts.menghitung_mimpi.viewmodel
 
 import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import id.ac.istts.menghitung_mimpi.data.Chat
 import id.ac.istts.menghitung_mimpi.data.ChatData
+import id.ac.istts.menghitung_mimpi.layout.ChatState
+import id.ac.istts.menghitung_mimpi.layout.ChatUiEvent
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update

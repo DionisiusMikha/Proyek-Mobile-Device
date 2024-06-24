@@ -39,13 +39,13 @@ class HistoryFragment : Fragment() {
     }
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
 
-    private var listInvest: List<Invest> = emptyList()
-    private var listDanaDarurat: List<DanaDarurat> = emptyList()
-    private var listNikah: List<Nikah> = emptyList()
+    private var listInvest: ArrayList<Invest> = arrayListOf()
+    private var listDanaDarurat: ArrayList<DanaDarurat> = arrayListOf()
+    private var listNikah: ArrayList<Nikah> = arrayListOf()
 
     private var danaDaruratFilter = false
     private var menikahFilter = false
-    private var investFilter = false
+    private var investFilter = true
     private var popup = false
 
     private lateinit var historyAdapter: HistoryAdapter
@@ -68,8 +68,50 @@ class HistoryFragment : Fragment() {
         btnMenikahFilter = view.findViewById(R.id.btnMenikahFilter)
         recyclerView = view.findViewById(R.id.rvListHistory)
 
+        fetchData()
+
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        historyAdapter = HistoryAdapter(emptyList())
+        fetchData()
+        historyAdapter = HistoryAdapter(listInvest, onClick = { type, index ->
+            if(type == "darurat"){
+                val bundle = Bundle()
+                val data = listDanaDarurat[index]
+                bundle.putInt("danaDarurat", data.target)
+                bundle.putInt("danaSkrg", data.uangSekarang)
+                bundle.putInt("lama", data.waktu)
+                bundle.putInt("invest", data.invest)
+                bundle.putInt("presentase", data.presentase)
+                bundle.putInt("total", data.finalAmount)
+                bundle.putBoolean("status", data.status)
+                bundle.putBoolean("simpan", false)
+                goToFragment(ResponseDanaDaruratFragment(), bundle)
+            } else if(type == "investasi"){
+                val bundle = Bundle()
+                val data = listInvest[index]
+                bundle.putInt("target", data.target)
+                bundle.putInt("lamawaktu", data.waktu)
+                bundle.putInt("uang_sekarang", data.uangSekarang)
+                bundle.putInt("invest", data.invest)
+                bundle.putInt("presentase", data.presentase)
+                bundle.putInt("final", data.finalAmount)
+                bundle.putInt("statustype", data.type)
+                bundle.putBoolean("status", data.status)
+                bundle.putBoolean("simpan", false)
+                goToFragment(ResponseKalkulatorInvestasiFragment(), bundle)
+            } else if(type == "nikah"){
+                val bundle = Bundle()
+                val data = listNikah[index]
+                bundle.putInt("biaya_final", data.biayaFinal)
+                bundle.putInt("uang_sekarang", data.uangSekarang)
+                bundle.putInt("invest", data.invest)
+                bundle.putInt("presentase", data.presentase)
+                bundle.putInt("waktu", data.waktu)
+                bundle.putInt("total_final", data.totalFinal)
+                bundle.putBoolean("status", data.status)
+                bundle.putBoolean("simpan", false)
+                goToFragment(ResponseMenikahFragment(), bundle)
+            }
+        })
         recyclerView.adapter = historyAdapter
 
         tvChooseKategori.setOnClickListener {
@@ -102,36 +144,39 @@ class HistoryFragment : Fragment() {
             investFilter = false
             updateAdapter()
         }
-
-        fetchData()
     }
 
     private fun fetchData() {
         coroutineScope.launch {
             try {
-                vm.getDanaDarurat(Token.getToken()!!, onSuccess = { list ->
-                    listDanaDarurat = list
-                }, onError = { error ->
-                    requireActivity().runOnUiThread {
-                        Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
-                    }
-                })
-
-                vm.getNikah(Token.getToken()!!, onSuccess = { list ->
-                    listNikah = list
-                }, onError = { error ->
-                    requireActivity().runOnUiThread {
-                        Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
-                    }
-                })
-
-                vm.getInvest(Token.getToken()!!, onSuccess = { list ->
-                    listInvest = list
-                }, onError = { error ->
-                    requireActivity().runOnUiThread {
-                        Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
-                    }
-                })
+                if(investFilter == true){
+                    vm.getDanaDarurat(Token.getToken()!!, onSuccess = { list ->
+                        listDanaDarurat.clear()
+                        listDanaDarurat.addAll(list)
+                    }, onError = { error ->
+                        requireActivity().runOnUiThread {
+                            Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
+                        }
+                    })
+                } else if(danaDaruratFilter == true){
+                    vm.getNikah(Token.getToken()!!, onSuccess = { list ->
+                        listNikah.clear()
+                        listNikah.addAll(list)
+                    }, onError = { error ->
+                        requireActivity().runOnUiThread {
+                            Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
+                        }
+                    })
+                } else if(menikahFilter == true){
+                    vm.getInvest(Token.getToken()!!, onSuccess = { list ->
+                        listInvest.clear()
+                        listInvest.addAll(list)
+                    }, onError = { error ->
+                        requireActivity().runOnUiThread {
+                            Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
+                        }
+                    })
+                }
             } catch (e: Exception) {
                 requireActivity().runOnUiThread {
                     Toast.makeText(requireContext(), "Error fetching data: ${e.message}", Toast.LENGTH_LONG).show()
@@ -141,6 +186,7 @@ class HistoryFragment : Fragment() {
     }
 
     private fun updateAdapter() {
+        fetchData()
         val items: List<Any> = when {
             danaDaruratFilter -> listDanaDarurat
             investFilter -> listInvest
@@ -149,8 +195,55 @@ class HistoryFragment : Fragment() {
         }
 
         requireActivity().runOnUiThread {
-            historyAdapter = HistoryAdapter(items)
+            historyAdapter = HistoryAdapter(items, onClick = { type, index ->
+                if(type == "darurat"){
+                    val bundle = Bundle()
+                    val data = listDanaDarurat[index]
+                    bundle.putInt("danaDarurat", data.target)
+                    bundle.putInt("danaSkrg", data.uangSekarang)
+                    bundle.putInt("lama", data.waktu)
+                    bundle.putInt("invest", data.invest)
+                    bundle.putInt("presentase", data.presentase)
+                    bundle.putInt("total", data.finalAmount)
+                    bundle.putBoolean("status", data.status)
+                    bundle.putBoolean("simpan", false)
+                    goToFragment(ResponseDanaDaruratFragment(), bundle)
+                } else if(type == "investasi"){
+                    val bundle = Bundle()
+                    val data = listInvest[index]
+                    bundle.putInt("target", data.target)
+                    bundle.putInt("lamawaktu", data.waktu)
+                    bundle.putInt("uang_sekarang", data.uangSekarang)
+                    bundle.putInt("invest", data.invest)
+                    bundle.putInt("presentase", data.presentase)
+                    bundle.putInt("final", data.finalAmount)
+                    bundle.putInt("statustype", data.type)
+                    bundle.putBoolean("status", data.status)
+                    bundle.putBoolean("simpan", false)
+                    goToFragment(ResponseKalkulatorInvestasiFragment(), bundle)
+                } else if(type == "nikah"){
+                    val bundle = Bundle()
+                    val data = listNikah[index]
+                    bundle.putInt("biaya_final", data.biayaFinal)
+                    bundle.putInt("uang_sekarang", data.uangSekarang)
+                    bundle.putInt("invest", data.invest)
+                    bundle.putInt("presentase", data.presentase)
+                    bundle.putInt("waktu", data.waktu)
+                    bundle.putInt("total_final", data.totalFinal)
+                    bundle.putBoolean("status", data.status)
+                    bundle.putBoolean("simpan", false)
+                    goToFragment(ResponseMenikahFragment(), bundle)
+                }
+            })
             recyclerView.adapter = historyAdapter
         }
+    }
+
+    private fun goToFragment(fragment: Fragment, bundle: Bundle) {
+        fragment.arguments = bundle
+        val transaction = requireActivity().supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragmentContainer, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 }

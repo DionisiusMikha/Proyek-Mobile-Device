@@ -8,11 +8,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class AuthVM(private val authRepo: AuthRepo): ViewModel() {
-    suspend fun getName(token: String, onSuccess: (String) -> Unit, onError: (String) -> Unit) {
+    suspend fun getName(token: String, onSuccess: (String, Int, Int) -> Unit, onError: (String) -> Unit) {
         viewModelScope.launch(Dispatchers.IO) {
             val result = authRepo.getName(token)
             result.onSuccess { response ->
-                onSuccess(response.name)
+                onSuccess(response.name, response.saldo, response.tabungan)
             }.onFailure { throwable ->
                 if (throwable is ApiException) {
                     onError(throwable.message ?: "Unknown error")

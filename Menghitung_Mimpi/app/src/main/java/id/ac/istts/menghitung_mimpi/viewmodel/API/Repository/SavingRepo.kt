@@ -70,6 +70,7 @@ class SavingRepo  (private val savingService: SavingService) {
     suspend fun getNikah(token: String): Result<List<Nikah>> {
         return try {
             val response = savingService.getNikah("Bearer ${token}")
+            println(response)
             Result.success(response)
         } catch (e: ApiException) {
             Result.failure(e)
