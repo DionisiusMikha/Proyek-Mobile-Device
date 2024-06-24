@@ -14,6 +14,7 @@ const {
   getInvestasi,
   getDanaDarurat,
   getNikah,
+  getProfile,
   forgotPassword,
   cekOtp,
   resetPassword,

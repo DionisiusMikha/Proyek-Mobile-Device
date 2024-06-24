@@ -227,8 +227,26 @@ class DanaDaruratFragment : Fragment() {
             }
         })
 
-        btnSudahMenikah.setOnClickListener{ statusMenikah = 1 }
-        btnBelumMenikah.setOnClickListener{ statusMenikah = 0 }
+        btnSudahMenikah.setOnClickListener{
+            statusMenikah = 1
+            btnSudahMenikah.isEnabled = false
+            btnBelumMenikah.isEnabled = true
+            if (statusMenikah == 1) {
+                btnSudahMenikah.backgroundTintList = resources.getColorStateList(R.color.gray)
+                btnBelumMenikah.backgroundTintList = resources.getColorStateList(R.color.polka)
+            }
+        }
+
+        btnBelumMenikah.setOnClickListener{
+            statusMenikah = 0
+            btnBelumMenikah.isEnabled = false
+            btnSudahMenikah.isEnabled = true
+            if (statusMenikah == 0) {
+                btnBelumMenikah.backgroundTintList = resources.getColorStateList(R.color.gray)
+                btnSudahMenikah.backgroundTintList = resources.getColorStateList(R.color.polka)
+            }
+        }
+
         btnHitungDanaDarurat.setOnClickListener{
             val pengeluaranWajib: Int = etPengeluaranWajibTiapBulan.text.toString().replace("[Rp,.]".toRegex(), "").toInt()
             val statusMenikah: Int = statusMenikah

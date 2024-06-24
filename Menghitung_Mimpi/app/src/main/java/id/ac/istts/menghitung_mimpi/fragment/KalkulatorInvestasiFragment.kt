@@ -128,17 +128,35 @@ class KalkulatorInvestasiFragment : Fragment() {
             type = 0
             btnAwalTahun.text = "Awal Tahun"
             btnAkhirBulan.text = "Akhir Tahun"
+            if(type == 0){
+                btnSetiapTahun.backgroundTintList = resources.getColorStateList(R.color.gray)
+                btnSetiapBulan.backgroundTintList = resources.getColorStateList(R.color.polka)
+                btnSetiapBulan.isEnabled = true
+            }
         }
         btnSetiapBulan.setOnClickListener{
             type = 1
             btnAwalTahun.text = "Awal Bulan"
             btnAkhirBulan.text = "Akhir Bulan"
+            if (type == 1){
+                btnSetiapBulan.backgroundTintList = resources.getColorStateList(R.color.gray)
+                btnSetiapTahun.backgroundTintList = resources.getColorStateList(R.color.polka)
+                btnSetiapTahun.isEnabled = true
+            }
         }
         btnAwalTahun.setOnClickListener{
             range = 0
+            if (range == 0){
+                btnAwalTahun.backgroundTintList = resources.getColorStateList(R.color.gray)
+                btnAkhirBulan.backgroundTintList = resources.getColorStateList(R.color.polka)
+            }
         }
         btnAkhirBulan.setOnClickListener{
             range = 1
+            if (range == 1){
+                btnAkhirBulan.backgroundTintList = resources.getColorStateList(R.color.gray)
+                btnAwalTahun.backgroundTintList = resources.getColorStateList(R.color.polka)
+            }
         }
 
         btnHitungKalkulatorInvestasi.setOnClickListener{

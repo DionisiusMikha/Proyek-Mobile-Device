@@ -64,7 +64,7 @@ class HomeFragment : Fragment() {
 
         val formatter = DecimalFormat("#,###")
         coroutine.launch {
-            vm.getName(Token.getToken()!!, onSuccess = { name, saldo, tabungan ->
+            vm.getName(Token.getToken()!!, onSuccess = { name, saldo, tabungan, _ ->
                 activity?.runOnUiThread {
                     tvUser.text = name
                     tvSaldo.text = "Rp. ${formatter.format(saldo)}"

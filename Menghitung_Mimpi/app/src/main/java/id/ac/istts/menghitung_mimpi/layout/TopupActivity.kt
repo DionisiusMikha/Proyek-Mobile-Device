@@ -54,14 +54,21 @@ class TopupActivity : AppCompatActivity() {
 
         fetchTopupItems(topupService, token)
 
+        val metodeAdapter = ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_item,
+                listOf("Admin")
+        )
+        metodeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        dropdownMetode.adapter = metodeAdapter
+        dropdownMetode.setSelection(0)
+
         btnSaveTopup.setOnClickListener {
             val metode = dropdownMetode.selectedItem.toString()
             val pocket = dropdownPocket.selectedItem.toString()
             val amount = etAmount.text.toString()
 
-            if (metode == "Pilih Metode") {
-                Toast.makeText(this, "Pilih Metode", Toast.LENGTH_SHORT).show()
-            } else if (pocket == "Pilih Pocket") {
+            if (pocket == "Pilih Pocket") {
                 Toast.makeText(this, "Pilih Pocket", Toast.LENGTH_SHORT).show()
             } else if (amount.isEmpty()) {
                 Toast.makeText(this, "Masukkan Jumlah", Toast.LENGTH_SHORT).show()
@@ -104,6 +111,7 @@ class TopupActivity : AppCompatActivity() {
                             }
 
                             override fun onFailure(call: Call<List<PocketItem>>, t: Throwable) {
+                                Log.e("TopupActivity", t.message.toString())
                                 Toast.makeText(
                                                 this@TopupActivity,
                                                 "Error: ${t.message}",

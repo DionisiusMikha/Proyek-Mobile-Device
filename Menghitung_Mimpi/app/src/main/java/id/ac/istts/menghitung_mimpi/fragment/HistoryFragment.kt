@@ -149,34 +149,34 @@ class HistoryFragment : Fragment() {
     private fun fetchData() {
         coroutineScope.launch {
             try {
-                if(investFilter == true){
                     vm.getDanaDarurat(Token.getToken()!!, onSuccess = { list ->
                         listDanaDarurat.clear()
                         listDanaDarurat.addAll(list)
+                        updateAdapter()
                     }, onError = { error ->
                         requireActivity().runOnUiThread {
                             Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
                         }
                     })
-                } else if(danaDaruratFilter == true){
                     vm.getNikah(Token.getToken()!!, onSuccess = { list ->
                         listNikah.clear()
                         listNikah.addAll(list)
+                        updateAdapter()
                     }, onError = { error ->
                         requireActivity().runOnUiThread {
                             Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
                         }
                     })
-                } else if(menikahFilter == true){
                     vm.getInvest(Token.getToken()!!, onSuccess = { list ->
                         listInvest.clear()
                         listInvest.addAll(list)
+                        updateAdapter()
                     }, onError = { error ->
                         requireActivity().runOnUiThread {
                             Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
                         }
                     })
-                }
+
             } catch (e: Exception) {
                 requireActivity().runOnUiThread {
                     Toast.makeText(requireContext(), "Error fetching data: ${e.message}", Toast.LENGTH_LONG).show()
