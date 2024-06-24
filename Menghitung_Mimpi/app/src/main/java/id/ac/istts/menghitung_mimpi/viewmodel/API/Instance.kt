@@ -13,7 +13,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 object RetrofitInstance {
-    private const val BASE_URL = "http://10.0.2.2:3000/api/"
+    private const val BASE_URL = "https://mdp.jensgelato.com/api/"
 
     val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
 
