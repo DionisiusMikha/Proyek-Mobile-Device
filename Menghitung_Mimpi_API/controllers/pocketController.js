@@ -174,7 +174,7 @@ const updatePocket = async (req, res) => {
     }
 
     pocket.nama_pocket = nama_pocket;
-    pocket.saldo_pocket = saldo_pocket;
+    pocket.saldo_pocket += saldo_pocket;
 
     await pocket.save();
 
