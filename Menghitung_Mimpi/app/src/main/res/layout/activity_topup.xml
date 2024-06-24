@@ -59,7 +59,8 @@
             android:layout_height="29dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView116" />
+            app:layout_constraintTop_toBottomOf="@+id/textView116" 
+            />
 
         <TextView
             android:id="@+id/textView117"
@@ -74,7 +75,7 @@
             app:layout_constraintTop_toBottomOf="@+id/dropdownPocket" />
 
         <EditText
-            android:id="@+id/editTextNumberDecimal"
+            android:id="@+id/etAmount"
             android:layout_width="295dp"
             android:layout_height="45dp"
             android:ems="10"
